@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pause — Daily Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f0e8;
+    --paper: #faf7f2;
+    --ink: #2c2416;
+    --ink-light: #7a6e5f;
+    --ink-faint: #c4bbb0;
+    --accent: #b85c38;
+    --accent-warm: #d4845a;
+    --accent-cool: #4a7c8e;
+    --green: #5a8a6a;
+    --amber: #c4933f;
+    --border: #e0d8cc;
+    --shadow: 0 2px 12px rgba(44,36,22,0.08);
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  /* Subtle paper texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .app { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    padding: 40px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  h1 span {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .date-display {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .tagline {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  /* Nav tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 9px 6px;
+    background: none;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-light);
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tab.active {
+    background: var(--accent);
+    color: white;
+  }
+
+  .tab:hover:not(.active) { background: var(--border); }
+
+  /* Sections */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Cards */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* Mood slider */
+  .mood-row {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 4px;
+  }
+
+  .mood-item label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .mood-item label span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    outline: none;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(184,92,56,0.3);
+    transition: transform 0.15s;
+  }
+
+  input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+  /* Habit checkboxes */
+  .habit-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .habit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .habit-item:hover { border-color: var(--accent-warm); }
+
+  .habit-item.checked {
+    background: #f0f7f1;
+    border-color: var(--green);
+  }
+
+  .habit-check {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ink-faint);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 12px;
+    color: transparent;
+  }
+
+  .habit-item.checked .habit-check {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+
+  .habit-text { flex: 1; }
+  .habit-text strong { font-size: 0.9rem; font-weight: 500; display: block; margin-bottom: 2px; }
+  .habit-text small { font-size: 0.78rem; color: var(--ink-light); font-style: italic; }
+
+  .habit-streak {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--amber);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Textarea / reflection */
+  textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 14px 16px;
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    resize: vertical;
+    min-height: 100px;
+    outline: none;
+    transition: border-color 0.2s;
+    line-height: 1.7;
+  }
+
+  textarea:focus { border-color: var(--accent-cool); }
+  textarea::placeholder { color: var(--ink-faint); font-style: italic; }
+
+  /* Prompt questions */
+  .prompts { display: flex; flex-direction: column; gap: 16px; }
+
+  .prompt-q {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 8px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent-cool);
+  }
+
+  /* Button */
+  .btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 16px;
+  }
+
+  .btn:hover { background: var(--accent-warm); transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-ghost {
+    background: none;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+
+  .btn-ghost:hover { background: var(--accent); color: white; }
+
+  /* Wins board */
+  .win-form { display: flex; gap: 10px; margin-bottom: 20px; }
+  .win-form input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 12px 16px;
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .win-form input:focus { border-color: var(--green); }
+  .win-form input::placeholder { color: var(--ink-faint); font-style: italic; }
+  .win-form button {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+  }
+  .win-form button:hover { background: #4a7a5a; }
+
+  .wins-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .win-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #f0f7f1;
+    border: 1px solid #c4deca;
+    border-radius: 9px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .win-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  .win-content { flex: 1; }
+  .win-content p { font-size: 0.88rem; color: var(--ink); line-height: 1.5; }
+  .win-content small { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--ink-light); }
+
+  .win-del {
+    background: none;
+    border: none;
+    color: var(--ink-faint);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .win-del:hover { color: var(--accent); }
+
+  /* Tension log */
+  .tension-entry {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 16px;
+    margin-bottom: 12px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .tension-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .tension-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--border);
+    color: var(--ink-light);
+  }
+
+  .tension-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+  }
+
+  /* Mood history chart */
+  .mini-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 60px;
+    margin-top: 16px;
+  }
+
+  .bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+  .bar {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    transition: height 0.4s ease;
+    min-height: 2px;
+  }
+
+  .bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.8rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  /* Save toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--ink);
+    color: var(--bg);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    z-index: 100;
+    transition: transform 0.3s ease;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Section header helper */
+  .section-intro {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-bottom: 24px;
+    line-height: 1.7;
+    padding: 14px 16px;
+    background: var(--paper);
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 0 9px 9px 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tension form toggle */
+  .tension-form { display: none; margin-bottom: 16px; }
+  .tension-form.open { display: block; }
+
+  /* Select */
+  select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 10px 14px;
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  select:focus { border-color: var(--accent-cool); }
+
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    h1 { font-size: 1.7rem; }
+    .stats-row { grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .stat-num { font-size: 1.4rem; }
+    .tab { font-size: 0.65rem; padding: 8px 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <div class="header-top">
+      <div>
+        <h1><span>Pause.</span></h1>
+        <p class="tagline">A daily practice in listening, following & being present.</p>
+      </div>
+      <div class="date-display" id="dateDisplay"></div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" onclick="switchTab('checkin')">Check-in</button>
+    <button class="tab" onclick="switchTab('habits')">Habits</button>
+    <button class="tab" onclick="switchTab('wins')">Wins</button>
+    <button class="tab" onclick="switchTab('log')">Tension Log</button>
+    <button class="tab" onclick="switchTab('history')">History</button>
+  </nav>
+
+  <!-- CHECK-IN -->
+  <div class="section active" id="section-checkin">
+    <p class="section-intro">A few minutes in the morning, a few minutes at night. No pressure — just honest observation.</p>
+
+    <div class="card">
+      <div class="card-title">Morning — How I'm arriving today</div>
+      <div class="mood-row">
+        <div class="mood-item">
+          <label>Energy <span id="val-energy">5</span></label>
+          <input type="range" min="1" max="10" value="5" oninput="updateVal('energy', this.value)">
+        </div>
+        <div class="mood-item">
+          <label>Mood / Emotional weight <span id="val-mood">5</span></label>
+          <input type="range" min="1" max="10" value="5" oninput="updateVal('mood', this.value)">
+        </div>
+        <div class="mood-item">
+          <label>Patience available <span id="val-patience">5</span></label>
+          <input type="range" min="1" max="10" value="5" oninput="updateVal('patience', this.value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Morning Intention</div>
+      <div class="prompts">
+        <div>
+          <p class="prompt-q">One thing I want to practice today…</p>
+          <textarea id="intention-1" placeholder="e.g. I'll let my wife finish her thought before I respond."></textarea>
+        </div>
+        <div>
+          <p class="prompt-q">One thing I want to notice about myself today…</p>
+          <textarea id="intention-2" placeholder="e.g. When I feel the urge to jump in and fix things."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Evening — How it actually went</div>
+      <div class="mood-row" style="margin-bottom:16px;">
+        <div class="mood-item">
+          <label>Listened more than I spoke <span id="val-listen">5</span></label>
+          <input type="range" min="1" max="10" value="5" oninput="updateVal('listen', this.value)">
+        </div>
+        <div class="mood-item">
+          <label>Followed when I could have led <span id="val-follow">5</span></label>
+          <input type="range" min="1" max="10" value="5" oninput="updateVal('follow', this.value)">
+        </div>
+        <div class="mood-item">
+          <label>Connection with family today <span id="val-connect">5</span></label>
+          <input type="range" min="1" max="10" value="5" oninput="updateVal('connect', this.value)">
+        </div>
+      </div>
+      <div class="prompts">
+        <div>
+          <p class="prompt-q">A moment I'm proud of…</p>
+          <textarea id="reflect-1" placeholder="Small counts. Pausing before responding, asking a question instead of giving advice..."></textarea>
+        </div>
+        <div>
+          <p class="prompt-q">A moment I want to learn from…</p>
+          <textarea id="reflect-2" placeholder="No self-attack. Just curiosity — what was happening in me?"></textarea>
+        </div>
+        <div>
+          <p class="prompt-q">Tomorrow, I could try…</p>
+          <textarea id="reflect-3" placeholder="One small adjustment."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="saveCheckin()">Save Today's Check-in</button>
+  </div>
+
+  <!-- HABITS -->
+  <div class="section" id="section-habits">
+    <p class="section-intro">These are behaviors to practice, not rules to be perfect at. Each check is a small act of intention.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-num" id="streak-count">0</span>
+        <span class="stat-label">day streak</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="today-checked">0</span>
+        <span class="stat-label">today</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="week-pct">0%</span>
+        <span class="stat-label">this week</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Listening & Presence</div>
+      <div class="habit-list" id="habits-listen"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Leading vs. Following</div>
+      <div class="habit-list" id="habits-lead"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Mood & Self-Care</div>
+      <div class="habit-list" id="habits-mood"></div>
+    </div>
+
+    <button class="btn" onclick="saveHabits()">Save Habits</button>
+  </div>
+
+  <!-- WINS -->
+  <div class="section" id="section-wins">
+    <p class="section-intro">Evidence that you're changing. Log every moment you caught yourself and chose differently — even the tiny ones.</p>
+
+    <div class="card">
+      <div class="card-title">Add a Win</div>
+      <div class="win-form">
+        <input type="text" id="win-input" placeholder="e.g. Asked my daughter about her day instead of telling her about mine…" onkeydown="if(event.key==='Enter') addWin()">
+        <button onclick="addWin()">+</button>
+      </div>
+    </div>
+
+    <div class="wins-list" id="wins-list"></div>
+    <p id="wins-empty" style="text-align:center;color:var(--ink-faint);font-style:italic;font-size:0.88rem;margin-top:20px;">Your wins will appear here. Start small.</p>
+  </div>
+
+  <!-- TENSION LOG -->
+  <div class="section" id="section-log">
+    <p class="section-intro">Not a blame log — a pattern finder. When tension shows up, note what happened without judgment. Look for your triggers over time.</p>
+
+    <div class="card">
+      <div class="card-title">Log a moment</div>
+      <button class="btn btn-ghost" onclick="toggleTensionForm()">+ New Entry</button>
+
+      <div class="tension-form" id="tension-form">
+        <div class="divider"></div>
+        <select id="t-person">
+          <option value="">Who was involved?</option>
+          <option value="wife">Wife</option>
+          <option value="daughter">Daughter</option>
+          <option value="both">Both</option>
+          <option value="self">Just me</option>
+        </select>
+        <select id="t-type">
+          <option value="">What pattern showed up?</option>
+          <option value="spoke-first">I spoke before listening</option>
+          <option value="led-when-should-follow">I led when I should have followed</option>
+          <option value="reactive">I reacted instead of responded</option>
+          <option value="shutdown">I went quiet / shut down</option>
+          <option value="mood">My mood affected them</option>
+          <option value="other">Something else</option>
+        </select>
+        <textarea id="t-note" placeholder="What was happening? What did I notice in my body before it happened? (No self-attack — just honest observation.)" style="min-height:80px;margin-bottom:10px;"></textarea>
+        <textarea id="t-next" placeholder="If it happens again, I could try…" style="min-height:60px;margin-bottom:10px;"></textarea>
+        <div class="btn-row">
+          <button class="btn" onclick="saveTensionEntry()">Save Entry</button>
+          <button class="btn btn-ghost" onclick="toggleTensionForm()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tension-list"></div>
+    <p id="tension-empty" style="text-align:center;color:var(--ink-faint);font-style:italic;font-size:0.88rem;margin-top:20px;">Entries appear here. Patterns become visible over time.</p>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="section" id="section-history">
+    <p class="section-intro">Zoom out. Real change happens slowly and isn't always visible day-to-day. Trust the trend.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-num" id="hist-checkins">0</span>
+        <span class="stat-label">check-ins</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="hist-wins">0</span>
+        <span class="stat-label">wins logged</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="hist-entries">0</span>
+        <span class="stat-label">log entries</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Mood trend — last 14 days</div>
+      <div class="mini-chart" id="mood-chart"></div>
+      <p style="font-size:0.75rem;color:var(--ink-faint);font-style:italic;margin-top:10px;text-align:center;">Emotional weight (blue) · Connection (green) · Patience (amber)</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Seasonal note</div>
+      <p style="font-size:0.88rem;color:var(--ink-light);line-height:1.7;" id="season-note"></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tension patterns</div>
+      <div id="pattern-summary" style="font-size:0.88rem;color:var(--ink-light);line-height:1.9;"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Saved ✓</div>
+
+<script>
+// ─── Storage helpers ─────────────────────────────────────────
+const store = {
+  get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set: (k, v) => localStorage.setItem(k, JSON.stringify(v)),
+};
+
+const today = () => new Date().toISOString().slice(0, 10);
+
+// ─── Date display ─────────────────────────────────────────────
+const d = new Date();
+document.getElementById('dateDisplay').innerHTML =
+  d.toLocaleDateString('en-US', { weekday: 'long' }) + '<br>' +
+  d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// ─── Tab switching ─────────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('section-' + tab).classList.add('active');
+  if (tab === 'history') renderHistory();
+  if (tab === 'habits') renderHabits();
+  if (tab === 'wins') renderWins();
+  if (tab === 'log') renderTension();
+}
+
+// ─── Slider labels ─────────────────────────────────────────────
+function updateVal(key, val) {
+  document.getElementById('val-' + key).textContent = val;
+}
+
+// ─── CHECK-IN ─────────────────────────────────────────────────
+function saveCheckin() {
+  const data = {
+    date: today(),
+    energy: document.querySelector('input[oninput*="energy"]').value,
+    mood: document.querySelector('input[oninput*="mood"]').value,
+    patience: document.querySelector('input[oninput*="patience"]').value,
+    listen: document.querySelector('input[oninput*="listen"]').value,
+    follow: document.querySelector('input[oninput*="follow"]').value,
+    connect: document.querySelector('input[oninput*="connect"]').value,
+    intention1: document.getElementById('intention-1').value,
+    intention2: document.getElementById('intention-2').value,
+    reflect1: document.getElementById('reflect-1').value,
+    reflect2: document.getElementById('reflect-2').value,
+    reflect3: document.getElementById('reflect-3').value,
+  };
+  const all = store.get('checkins') || {};
+  all[today()] = data;
+  store.set('checkins', all);
+  showToast('Check-in saved ✓');
+}
+
+// ─── HABITS ───────────────────────────────────────────────────
+const HABITS = {
+  listen: [
+    { id: 'h1', text: 'Let them finish before I responded', note: 'Counted to 3 after they stopped speaking' },
+    { id: 'h2', text: 'Asked a question instead of giving advice', note: '"What do you think?" instead of "Here\'s what I\'d do"' },
+    { id: 'h3', text: 'Made eye contact and put my phone down', note: 'Full presence, even for 5 minutes' },
+    { id: 'h4', text: 'Noticed the urge to interrupt and paused', note: 'Felt the impulse — didn\'t act on it' },
+  ],
+  lead: [
+    { id: 'h5', text: 'Followed my wife\'s lead on a decision', note: 'Let her steer without redirecting' },
+    { id: 'h6', text: 'Asked "what do you need?" instead of fixing', note: 'Support, not solutions' },
+    { id: 'h7', text: 'Let a moment of tension pass without escalating', note: 'Silence can be a good choice' },
+    { id: 'h8', text: 'Caught myself leading and stepped back', note: 'Noticed it in the moment' },
+  ],
+  mood: [
+    { id: 'h9', text: 'Got outside or exercised', note: 'Movement is medicine, especially in winter' },
+    { id: 'h10', text: 'Got enough sleep (7+ hours)', note: 'Sleep debt amplifies reactivity' },
+    { id: 'h11', text: 'Named my mood to myself before acting', note: '"I\'m frustrated" before speaking' },
+    { id: 'h12', text: 'Used light therapy / got sunlight', note: 'Especially important Oct–Mar' },
+  ],
+};
+
+function getHabitChecks() { return store.get('habit-checks') || {}; }
+function getStreakData() { return store.get('habit-streaks') || {}; }
+
+function renderHabits() {
+  const checks = getHabitChecks();
+  const td = today();
+
+  ['listen', 'lead', 'mood'].forEach(group => {
+    const el = document.getElementById('habits-' + group);
+    el.innerHTML = '';
+    HABITS[group].forEach(h => {
+      const isChecked = checks[td] && checks[td][h.id];
+      const streaks = getStreakData();
+      const streak = streaks[h.id] || 0;
+      const div = document.createElement('div');
+      div.className = 'habit-item' + (isChecked ? ' checked' : '');
+      div.onclick = () => toggleHabit(h.id, group);
+      div.innerHTML = `
+        <div class="habit-check">${isChecked ? '✓' : ''}</div>
+        <div class="habit-text">
+          <strong>${h.text}</strong>
+          <small>${h.note}</small>
+        </div>
+        ${streak > 1 ? `<div class="habit-streak">🔥 ${streak}d</div>` : ''}
+      `;
+      el.appendChild(div);
+    });
+  });
+
+  updateHabitStats();
+}
+
+function toggleHabit(id, group) {
+  const checks = getHabitChecks();
+  const td = today();
+  if (!checks[td]) checks[td] = {};
+  checks[td][id] = !checks[td][id];
+  store.set('habit-checks', checks);
+  renderHabits();
+}
+
+function updateHabitStats() {
+  const checks = getHabitChecks();
+  const td = today();
+  const todayChecks = checks[td] || {};
+  const checkedToday = Object.values(todayChecks).filter(Boolean).length;
+  document.getElementById('today-checked').textContent = checkedToday;
+
+  // Week %
+  const total = Object.values(HABITS).flat().length;
+  let weekChecked = 0, weekDays = 0;
+  for (let i = 0; i < 7; i++) {
+    const d2 = new Date(); d2.setDate(d2.getDate() - i);
+    const key = d2.toISOString().slice(0,10);
+    if (checks[key]) { weekDays++; weekChecked += Object.values(checks[key]).filter(Boolean).length; }
+  }
+  const pct = weekDays ? Math.round(weekChecked / (weekDays * total) * 100) : 0;
+  document.getElementById('week-pct').textContent = pct + '%';
+
+  // Streak (days with any check)
+  let streak = 0;
+  for (let i = 0; i < 90; i++) {
+    const d2 = new Date(); d2.setDate(d2.getDate() - i);
+    const key = d2.toISOString().slice(0,10);
+    if (checks[key] && Object.values(checks[key]).some(Boolean)) streak++;
+    else if (i > 0) break;
+  }
+  document.getElementById('streak-count').textContent = streak;
+}
+
+function saveHabits() {
+  showToast('Habits saved ✓');
+}
+
+// ─── WINS ─────────────────────────────────────────────────────
+function getWins() { return store.get('wins') || []; }
+
+function addWin() {
+  const inp = document.getElementById('win-input');
+  const text = inp.value.trim();
+  if (!text) return;
+  const wins = getWins();
+  wins.unshift({ id: Date.now(), text, date: today() });
+  store.set('wins', wins);
+  inp.value = '';
+  renderWins();
+  showToast('Win logged ✓');
+}
+
+function deleteWin(id) {
+  const wins = getWins().filter(w => w.id !== id);
+  store.set('wins', wins);
+  renderWins();
+}
+
+function renderWins() {
+  const wins = getWins();
+  const list = document.getElementById('wins-list');
+  const empty = document.getElementById('wins-empty');
+  list.innerHTML = '';
+  empty.style.display = wins.length ? 'none' : 'block';
+
+  const icons = ['✨','🌱','💙','🎯','🌟','💚','🔑','🌿'];
+
+  wins.forEach(w => {
+    const d2 = document.createElement('div');
+    d2.className = 'win-item';
+    d2.innerHTML = `
+      <div class="win-icon">${icons[w.id % icons.length]}</div>
+      <div class="win-content">
+        <p>${w.text}</p>
+        <small>${formatDate(w.date)}</small>
+      </div>
+      <button class="win-del" onclick="deleteWin(${w.id})">✕</button>
+    `;
+    list.appendChild(d2);
+  });
+}
+
+// ─── TENSION LOG ──────────────────────────────────────────────
+function getTension() { return store.get('tension') || []; }
+
+function toggleTensionForm() {
+  document.getElementById('tension-form').classList.toggle('open');
+}
+
+const personLabels = { wife:'Wife', daughter:'Daughter', both:'Both', self:'Just me' };
+const typeLabels = {
+  'spoke-first':'I spoke before listening',
+  'led-when-should-follow':'Led when should follow',
+  'reactive':'Reacted vs. responded',
+  'shutdown':'Went quiet/shut down',
+  'mood':'Mood affected them',
+  'other':'Other',
+};
+
+function saveTensionEntry() {
+  const person = document.getElementById('t-person').value;
+  const type = document.getElementById('t-type').value;
+  const note = document.getElementById('t-note').value.trim();
+  const next = document.getElementById('t-next').value.trim();
+  if (!note) { showToast('Add a note first'); return; }
+
+  const all = getTension();
+  all.unshift({ id: Date.now(), date: today(), person, type, note, next });
+  store.set('tension', all);
+  document.getElementById('t-person').value = '';
+  document.getElementById('t-type').value = '';
+  document.getElementById('t-note').value = '';
+  document.getElementById('t-next').value = '';
+  toggleTensionForm();
+  renderTension();
+  showToast('Entry saved ✓');
+}
+
+function renderTension() {
+  const entries = getTension();
+  const list = document.getElementById('tension-list');
+  const empty = document.getElementById('tension-empty');
+  list.innerHTML = '';
+  empty.style.display = entries.length ? 'none' : 'block';
+
+  entries.forEach(e => {
+    const div = document.createElement('div');
+    div.className = 'tension-entry';
+    div.innerHTML = `
+      <div class="tension-meta">
+        <span class="tension-tag">${personLabels[e.person] || 'Unspecified'} · ${typeLabels[e.type] || 'Other'}</span>
+        <span class="tension-date">${formatDate(e.date)}</span>
+      </div>
+      <p style="margin-bottom:${e.next ? '10px' : '0'}">${e.note}</p>
+      ${e.next ? `<p style="color:var(--accent-cool);font-style:italic;font-size:0.83rem;">Next time: ${e.next}</p>` : ''}
+    `;
+    list.appendChild(div);
+  });
+}
+
+// ─── HISTORY ──────────────────────────────────────────────────
+function renderHistory() {
+  const checkins = store.get('checkins') || {};
+  const wins = getWins();
+  const tension = getTension();
+
+  document.getElementById('hist-checkins').textContent = Object.keys(checkins).length;
+  document.getElementById('hist-wins').textContent = wins.length;
+  document.getElementById('hist-entries').textContent = tension.length;
+
+  // Mood chart — last 14 days
+  const chart = document.getElementById('mood-chart');
+  chart.innerHTML = '';
+  for (let i = 13; i >= 0; i--) {
+    const d2 = new Date(); d2.setDate(d2.getDate() - i);
+    const key = d2.toISOString().slice(0,10);
+    const c = checkins[key];
+    const wrap = document.createElement('div');
+    wrap.className = 'bar-wrap';
+
+    if (c) {
+      const bars = [
+        { val: c.mood, color: 'var(--accent-cool)' },
+        { val: c.connect, color: 'var(--green)' },
+        { val: c.patience, color: 'var(--amber)' },
+      ];
+      bars.forEach(b => {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = ((b.val || 5) * 5) + 'px';
+        bar.style.background = b.color;
+        bar.style.opacity = '0.75';
+        bar.style.width = '32%';
+        bar.style.display = 'inline-block';
+        wrap.appendChild(bar);
+      });
+    } else {
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      bar.style.height = '4px';
+      bar.style.background = 'var(--border)';
+      wrap.appendChild(bar);
+    }
+
+    const label = document.createElement('div');
+    label.className = 'bar-label';
+    label.textContent = d2.toLocaleDateString('en-US', { weekday: 'narrow' });
+    wrap.appendChild(label);
+    chart.appendChild(wrap);
+  }
+
+  // Seasonal note
+  const month = new Date().getMonth() + 1;
+  const seasonal = month >= 10 || month <= 2
+    ? 'You\'re in your harder months (Oct–Feb). Your depression tends to be more active now. This isn\'t weakness — it\'s seasonal. Prioritize light, sleep, and movement. Lower your expectations of yourself slightly. Give yourself more buffer.'
+    : month >= 3 && month <= 5
+    ? 'Spring is arriving. Energy often lifts. Notice if you\'re feeling a bit more patient — and use that window to build good habits that will carry you through next winter.'
+    : 'Summer and early fall are typically your easier months. This is a good time to work on your listening and following habits while your mood is steadier.';
+  document.getElementById('season-note').textContent = seasonal;
+
+  // Pattern summary
+  const patterns = {};
+  tension.forEach(e => {
+    if (e.type) patterns[e.type] = (patterns[e.type] || 0) + 1;
+  });
+
+  const pDiv = document.getElementById('pattern-summary');
+  if (Object.keys(patterns).length === 0) {
+    pDiv.textContent = 'No entries yet. Patterns will show here once you start logging tension moments.';
+  } else {
+    const sorted = Object.entries(patterns).sort((a,b) => b[1]-a[1]);
+    pDiv.innerHTML = sorted.map(([k,v]) =>
+      `<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;">
+        <span>${typeLabels[k] || k}</span>
+        <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);">${v}×</span>
+      </div>`
+    ).join('');
+  }
+}
+
+// ─── Utilities ────────────────────────────────────────────────
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d2 = new Date(dateStr + 'T12:00:00');
+  return d2.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ─── Init ─────────────────────────────────────────────────────
+renderHabits();
+renderWins();
+renderTension();
+</script>
+</body>
+</html>
