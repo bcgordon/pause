@@ -426,7 +426,8 @@ const SUPABASE_URL = 'https://wxsefbilwilpzpjoynds.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4c2VmYmlsd2lscHpwam95bmRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NTY1NzUsImV4cCI6MjA5MTIzMjU3NX0.X6wYcI6IjlJNCJUEMGpOoxy1UX796PBro7_Kj7DtDVA';
 
 async function sbFetch(path, opts = {}) {
-  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+  const url = SUPABASE_URL + '/rest/v1/' + path;
+  const res = await fetch(url, {
     headers: {
       'apikey': SUPABASE_KEY,
       'Authorization': 'Bearer ' + SUPABASE_KEY,
@@ -436,7 +437,11 @@ async function sbFetch(path, opts = {}) {
     method: opts.method || 'GET',
     body: opts.body || undefined
   });
-  if (!res.ok) throw new Error(await res.text());
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error('sbFetch error', opts.method || 'GET', path, res.status, errText);
+    throw new Error(errText);
+  }
   const t = await res.text();
   return t ? JSON.parse(t) : null;
 }
@@ -673,8 +678,14 @@ async function loadAllData() {
   if (!userCode) return;
   try {
     const rows = await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&select=key,value');
+    console.log('loadAllData rows:', rows);
     if (rows) rows.forEach(r => { cloudCache[r.key] = r.value; });
-  } catch(e) { console.warn('loadAllData:', e); }
+  } catch(e) {
+    console.error('loadAllData failed:', e.message);
+    // Show visible error on screen
+    const el = document.getElementById('signin-error');
+    if (el) el.textContent = 'Load error: ' + e.message;
+  }
 }
 
 async function cloudGet(key) {
@@ -696,7 +707,10 @@ async function cloudSet(key, value) {
       prefer: 'return=minimal,resolution=merge-duplicates',
       body: JSON.stringify({ user_code: userCode, key, value })
     });
-  } catch(e) { console.warn('cloudSet error:', e.message); }
+  } catch(e) {
+    console.error('cloudSet error:', e.message);
+    showToast('Save error: ' + e.message.slice(0,60));
+  }
 }
 
 // ── SLIDER LABELS ─────────────────────────────────────────────────────────────
