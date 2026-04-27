@@ -691,13 +691,12 @@ async function cloudSet(key, value) {
   cloudCache[key] = value;
   if (!userCode) return;
   try {
-    const rows = await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&key=eq.' + encodeURIComponent(key) + '&select=key');
-    if (rows && rows.length > 0) {
-      await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&key=eq.' + encodeURIComponent(key), { method: 'PATCH', prefer: 'return=minimal', body: JSON.stringify({ value }) });
-    } else {
-      await sbFetch('pause_data', { method: 'POST', prefer: 'return=minimal', body: JSON.stringify({ user_code: userCode, key, value }) });
-    }
-  } catch(e) { console.warn('cloudSet:', e); }
+    await sbFetch('pause_data', {
+      method: 'POST',
+      prefer: 'return=minimal,resolution=merge-duplicates',
+      body: JSON.stringify({ user_code: userCode, key, value })
+    });
+  } catch(e) { console.warn('cloudSet error:', e.message); }
 }
 
 // ── SLIDER LABELS ─────────────────────────────────────────────────────────────
