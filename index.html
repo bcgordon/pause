@@ -2,239 +2,244 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pause — Daily Practice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Pause">
+<meta name="theme-color" content="#b85c38">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23b85c38'/%3E%3Crect x='148' y='168' width='52' height='176' rx='26' fill='%23f5e6da'/%3E%3Cpath d='M290 344 C290 344 262 318 262 278 C262 228 292 188 322 176 C342 168 360 174 360 174 C360 174 366 196 362 218 C356 252 336 286 312 308 C304 314 296 322 290 344Z' fill='%23f0cdb8'/%3E%3Cpath d='M290 344 C294 322 306 300 320 280 C332 262 344 242 352 218' fill='none' stroke='%23b85c38' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABmJLR0QA/wD/AP+gvaeTAAAgAElEQVR4nO3de3Rc5WHv/d+zR3dZvsv3KxdjMNgGg23hADYBXyCQnCa4FGwCbUpPkiZtTk9z2uY9b1npe5om79umIc05LWkTgm1CcWlCAN8g2Fxs+YINvmF8l2xZtmXJsu4aSTPP+4dsYZAsaaTZ88zM/n7WYq3Z0uxn/7yW8f7NM3s/2wjOvfLkrLzMsDdZETNJxkwy1gyPGg0z0jBrzXAjW2hlBhlrPRkNurhblqR8h7EBQJJqJEVlVG+taTVWTTLRKsmcMVZnJFVYY8uNNWdCNnLwfOuk0qWrV0dch4ZkXAcIknXLZo32bMZNEePN8GSnW+laSZMljXCdDQASJCzpsKSDkg4aqz1t1tt6//NbSh3nChwKgE82Pj5/cEtrc5GkuxEZNEk6qDkTTHQK5h3YLQBgNdIGS1mTuWQAAAAASUVORK5CYII=">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f5f0e8; --paper: #faf7f2; --ink: #2c2416; --ink-light: #7a6e5f;
-    --ink-faint: #c4bbb0; --accent: #b85c38; --accent-warm: #d4845a;
-    --accent-cool: #4a7c8e; --green: #5a8a6a; --amber: #c4933f;
-    --border: #e0d8cc; --shadow: 0 2px 12px rgba(44,36,22,0.08);
-    --radius: 12px; --checked-bg: #eef6f0;
-  }
-  [data-theme="dark"] {
-    --bg: #1a1510; --paper: #211d17; --ink: #e8ddd0; --ink-light: #a89880;
-    --ink-faint: #5a5045; --accent: #c96e48; --accent-warm: #d4845a;
-    --accent-cool: #5a9aae; --green: #6aaa7a; --amber: #d4a34f;
-    --border: #3a3028; --shadow: 0 2px 16px rgba(0,0,0,0.3); --checked-bg: #1e2d22;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--ink); font-family: 'Lora', Georgia, serif; min-height: 100vh; padding-bottom: 80px; transition: background 0.3s, color 0.3s; }
-  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; }
-  .app { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 20px; }
+/* ── LIGHT THEME ── */
+:root {
+  --bg: #f5f0e8; --paper: #faf7f2; --ink: #2c2416; --ink-light: #7a6e5f;
+  --ink-faint: #c4bbb0; --accent: #b85c38; --accent-warm: #d4845a;
+  --accent-cool: #4a7c8e; --green: #5a8a6a; --amber: #c4933f;
+  --border: #e0d8cc; --border-mid: rgba(44,36,22,0.2);
+  --shadow: 0 2px 12px rgba(44,36,22,0.08);
+  --radius: 12px; --checked-bg: #eef6f0;
+  --safe-top: env(safe-area-inset-top,0px);
+  --safe-bottom: env(safe-area-inset-bottom,0px);
+}
+[data-theme="dark"] {
+  --bg: #1a1510; --paper: #211d17; --ink: #e8ddd0; --ink-light: #a89880;
+  --ink-faint: #5a5045; --accent: #c96e48; --accent-warm: #d4845a;
+  --accent-cool: #5a9aae; --green: #6aaa7a; --amber: #d4a34f;
+  --border: #3a3028; --border-mid: rgba(232,221,208,0.2);
+  --shadow: 0 2px 16px rgba(0,0,0,0.3); --checked-bg: #1e2d22;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#1a1510;--paper:#211d17;--ink:#e8ddd0;--ink-light:#a89880;
+  --ink-faint:#5a5045;--accent:#c96e48;--accent-warm:#d4845a;
+  --accent-cool:#5a9aae;--green:#6aaa7a;--amber:#d4a34f;
+  --border:#3a3028;--border-mid:rgba(232,221,208,0.2);
+  --shadow:0 2px 16px rgba(0,0,0,0.3);--checked-bg:#1e2d22;
+}}
 
-  /* ── PIN SCREEN ── */
-  #pin-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:40px 20px; position:relative; z-index:1; }
-  .pin-card { background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); padding:40px 36px; max-width:340px; width:100%; box-shadow:var(--shadow); text-align:center; }
-  .pin-logo { margin-bottom:28px; }
-  .pin-logo h1 { font-size:2.4rem; font-weight:400; }
-  .pin-logo h1 span { color:var(--accent); font-style:italic; }
-  .pin-logo p { color:var(--ink-light); font-style:italic; font-size:0.88rem; margin-top:6px; }
-  .pin-label { font-family:'DM Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--ink-light); margin-bottom:20px; display:block; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);color:var(--ink);font-family:'Lora',Georgia,serif;transition:background 0.3s,color 0.3s}
+body{padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+.app{max-width:640px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
 
-  /* PIN dots */
-  .pin-dots { display:flex; justify-content:center; gap:14px; margin-bottom:28px; }
-  .pin-dot { width:16px; height:16px; border-radius:50%; border:2px solid var(--ink-faint); background:transparent; transition:all 0.15s; }
-  .pin-dot.filled { background:var(--accent); border-color:var(--accent); transform:scale(1.1); }
-  .pin-dot.error { background:#c0392b; border-color:#c0392b; animation:shake 0.4s ease; }
+/* ── MEADOW NAV ── */
+#meadow-nav{position:fixed;top:0;left:0;right:0;z-index:9999;height:48px;background:rgba(245,240,232,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(44,36,22,0.1);display:flex;align-items:center;padding:0 1rem;gap:0.25rem;font-family:'DM Mono',monospace}
+[data-theme="dark"] #meadow-nav{background:rgba(26,21,16,0.92);border-bottom-color:rgba(232,221,208,0.1)}
+#meadow-nav a{display:flex;align-items:center;gap:0.4rem;text-decoration:none;padding:0.3rem 0.7rem;border-radius:100px;font-size:0.78rem;font-weight:500;color:var(--ink-light);transition:background 0.2s,color 0.2s;white-space:nowrap}
+#meadow-nav a:hover{background:rgba(44,36,22,0.07);color:var(--ink)}
+[data-theme="dark"] #meadow-nav a:hover{background:rgba(232,221,208,0.07)}
+#meadow-nav a img{width:20px;height:20px;border-radius:5px;object-fit:cover}
+#meadow-nav .nav-home{font-family:'Lora',serif;font-style:italic;font-size:0.88rem;color:var(--ink)}
+#meadow-nav .nav-div{width:1px;height:20px;background:rgba(44,36,22,0.15);margin:0 0.2rem;flex-shrink:0}
+[data-theme="dark"] #meadow-nav .nav-div{background:rgba(232,221,208,0.15)}
 
-  /* PIN keypad */
-  .keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:240px; margin:0 auto; }
-  .key { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:16px; font-family:'DM Mono',monospace; font-size:1.2rem; color:var(--ink); cursor:pointer; transition:all 0.15s; user-select:none; }
-  .key:hover { background:var(--border); border-color:var(--accent-warm); }
-  .key:active { transform:scale(0.94); background:var(--accent); color:white; border-color:var(--accent); }
-  .key.wide { grid-column:span 2; }
-  .key.del { color:var(--ink-light); font-size:1rem; }
+/* ── SIGN-IN ── */
+.signin-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px 40px;gap:20px;padding-top:calc(var(--safe-top) + 80px)}
+.signin-logo h1{font-size:2.6rem;font-weight:400;text-align:center}
+.signin-logo h1 span{color:var(--accent);font-style:italic}
+.signin-logo p{color:var(--ink-light);font-style:italic;font-size:0.9rem;text-align:center;margin-top:6px}
+.signin-sub{font-size:0.85rem;color:var(--ink-light);text-align:center;line-height:1.6}
+.signin-input{width:100%;border:1px solid var(--border-mid);border-radius:var(--radius);padding:14px 16px;font-size:1rem;font-family:'Lora',serif;color:var(--ink);background:var(--paper);outline:none;text-align:center;letter-spacing:0.05em}
+.signin-input:focus{border-color:var(--accent)}
+.signin-btn{width:100%;padding:14px;border-radius:var(--radius);border:none;background:var(--accent);color:white;font-size:1rem;font-weight:500;font-family:'DM Mono',monospace;letter-spacing:0.06em;cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.signin-btn:hover{background:var(--accent-warm)}
+.signin-btn:disabled{opacity:0.5;cursor:not-allowed}
+.signin-error{font-size:0.82rem;color:#c0392b;text-align:center}
+.signin-link{background:none;border:none;color:var(--accent);font-size:0.85rem;font-family:'Lora',serif;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color 0.2s;padding:0}
+.signin-link:hover{text-decoration-color:var(--accent)}
 
-  .pin-msg { font-size:0.82rem; color:var(--accent); margin-top:16px; min-height:20px; font-style:italic; }
-  .pin-msg.error { color:#c0392b; }
-  .pin-msg.success { color:var(--green); }
+/* ── REGISTER WIZARD ── */
+.register-screen{flex:1;display:flex;flex-direction:column;align-items:center;padding:80px 28px 40px;gap:0}
+.wizard-dots{display:flex;gap:6px;justify-content:center;margin-bottom:28px}
+.wizard-dot{width:8px;height:8px;border-radius:50%;background:var(--border-mid);transition:all 0.2s}
+.wizard-dot.active{background:var(--accent);width:20px;border-radius:4px}
+.wizard-dot.done{background:var(--accent);opacity:0.4}
+.wizard-step{width:100%;display:flex;flex-direction:column;gap:18px}
+.wizard-title{font-size:1.5rem;font-weight:400;color:var(--ink);text-align:center}
+.wizard-sub{font-size:0.88rem;color:var(--ink-light);text-align:center;line-height:1.6}
+.wizard-btn{width:100%;padding:13px;border-radius:var(--radius);border:none;background:var(--accent);color:white;font-size:0.9rem;font-weight:500;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;transition:all 0.2s}
+.wizard-btn:disabled{opacity:0.5;cursor:not-allowed}
+.wizard-btn:hover:not(:disabled){background:var(--accent-warm)}
+.wizard-back{background:none;border:none;color:var(--ink-light);font-size:0.83rem;font-family:'Lora',serif;cursor:pointer;text-align:center;padding:4px}
+.wizard-back:hover{color:var(--ink)}
+.code-display{background:var(--paper);border:1px solid var(--border-mid);border-radius:var(--radius);padding:20px;text-align:center;cursor:pointer}
+.code-value{font-family:'DM Mono',monospace;font-size:1.3rem;font-weight:400;color:var(--accent);letter-spacing:0.04em;word-break:break-all}
+.code-hint{font-size:0.75rem;color:var(--ink-faint);margin-top:8px;font-family:'DM Mono',monospace}
 
-  .pin-setup-note { font-size:0.78rem; color:var(--ink-faint); font-style:italic; margin-top:20px; line-height:1.6; }
+/* ── MAIN APP ── */
+.main-app{display:none;flex-direction:column;flex:1}
 
-  .theme-toggle-pin { position:absolute; top:20px; right:20px; background:var(--paper); border:1px solid var(--border); border-radius:20px; width:44px; height:24px; cursor:pointer; }
-  .theme-toggle-pin::after { content:''; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--accent); transition:transform 0.25s; }
-  [data-theme="dark"] .theme-toggle-pin::after { transform:translateX(20px); }
+/* ── HEADER ── */
+.header{padding:14px 16px 0;border-bottom:1px solid var(--border);background:var(--bg)}
+.header-appname{font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:400;color:var(--accent);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:6px}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:12px}
+.header-left h1{font-size:1.8rem;font-weight:400}
+.header-left h1 span{color:var(--accent);font-style:italic}
+.header-left p{font-size:0.85rem;color:var(--ink-light);font-style:italic;margin-top:3px}
+.header-right{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-top:4px}
+.date-badge{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--ink-light);text-align:right;line-height:1.6}
 
-  @keyframes shake {
-    0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
-  }
+/* Dark toggle */
+.theme-toggle{background:var(--paper);border:1px solid var(--border);border-radius:20px;width:42px;height:22px;cursor:pointer;position:relative;flex-shrink:0;transition:background 0.2s}
+.theme-toggle::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--accent);transition:transform 0.25s;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
+[data-theme="dark"] .theme-toggle::after{transform:translateX(20px)}
 
-  /* ── HEADER ── */
-  header { padding:36px 0 22px; border-bottom:1px solid var(--border); margin-bottom:28px; }
-  .header-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
-  h1 { font-size:2.2rem; font-weight:400; letter-spacing:-0.5px; }
-  h1 span { color:var(--accent); font-style:italic; }
-  .header-right { display:flex; flex-direction:column; align-items:flex-end; gap:8px; flex-shrink:0; }
-  .header-controls { display:flex; align-items:center; gap:10px; }
-  .date-display { font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--ink-light); text-align:right; line-height:1.6; }
-  .tagline { margin-top:4px; font-size:0.9rem; color:var(--ink-light); font-style:italic; }
+.signout-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--ink-light);cursor:pointer;text-transform:uppercase;letter-spacing:0.05em;transition:all 0.2s}
+.signout-btn:hover{border-color:var(--accent);color:var(--accent)}
 
-  .theme-toggle { background:var(--paper); border:1px solid var(--border); border-radius:20px; width:44px; height:24px; cursor:pointer; position:relative; transition:background 0.2s; flex-shrink:0; }
-  .theme-toggle::after { content:''; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--accent); transition:transform 0.25s; }
-  [data-theme="dark"] .theme-toggle::after { transform:translateX(20px); }
+/* ── TABS ── */
+.tabs{display:flex;gap:4px;padding:12px 16px 0;background:var(--bg)}
+.tab{flex:1;padding:8px 4px;background:none;border:none;border-radius:9px;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--ink-light);transition:all 0.2s;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid transparent}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab:hover:not(.active){color:var(--ink)}
 
-  .lock-btn { background:none; border:1px solid var(--border); border-radius:8px; padding:5px 12px; font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--ink-light); cursor:pointer; text-transform:uppercase; letter-spacing:0.05em; transition:all 0.2s; }
-  .lock-btn:hover { border-color:var(--accent); color:var(--accent); }
+/* ── VIEWS ── */
+.view{display:none;flex-direction:column;flex:1}
+.view.active{display:flex}
+.content{flex:1;overflow-y:auto;padding:16px 16px 100px}
 
-  /* ── TABS ── */
-  .tabs { display:flex; gap:4px; margin-bottom:28px; background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); padding:4px; }
-  .tab { flex:1; padding:9px 6px; background:none; border:none; border-radius:9px; cursor:pointer; font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--ink-light); transition:all 0.2s; text-transform:uppercase; letter-spacing:0.05em; }
-  .tab.active { background:var(--accent); color:white; }
-  .tab:hover:not(.active) { background:var(--border); }
+/* ── CARDS ── */
+.card{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);transition:background 0.3s,border-color 0.3s}
+.card-title{font-family:'DM Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:14px}
+.section-intro{font-size:0.85rem;color:var(--ink-light);font-style:italic;margin-bottom:20px;line-height:1.7;padding:12px 14px;background:var(--paper);border-left:3px solid var(--accent-warm);border-radius:0 9px 9px 0}
 
-  /* ── SECTIONS ── */
-  .section { display:none; }
-  .section.active { display:block; }
+/* ── SLIDERS ── */
+.mood-row{display:flex;flex-direction:column;gap:14px;margin-bottom:4px}
+.mood-item label{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--ink);margin-bottom:5px}
+.mood-item label span{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--ink-light)}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:var(--border);border-radius:2px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 1px 4px rgba(184,92,56,0.3);transition:transform 0.15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
-  /* ── CARDS ── */
-  .card { background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:16px; box-shadow:var(--shadow); }
-  .card-title { font-family:'DM Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:16px; }
-  .card p { font-size:0.9rem; color:var(--ink-light); line-height:1.6; }
+/* ── HABITS ── */
+.habit-list{display:flex;flex-direction:column;gap:10px}
+.habit-item{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;background:var(--bg);border:1px solid var(--border);border-radius:9px;cursor:pointer;transition:all 0.2s;user-select:none}
+.habit-item:hover{border-color:var(--accent-warm)}
+.habit-item.checked{background:var(--checked-bg);border-color:var(--green)}
+.habit-check{width:20px;height:20px;border:2px solid var(--ink-faint);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-size:11px;color:transparent}
+.habit-item.checked .habit-check{background:var(--green);border-color:var(--green);color:white}
+.habit-text{flex:1}
+.habit-text strong{font-size:0.88rem;font-weight:500;display:block;margin-bottom:2px;color:var(--ink)}
+.habit-text small{font-size:0.76rem;color:var(--ink-light);font-style:italic}
 
-  /* ── SLIDERS ── */
-  .mood-row { display:flex; flex-direction:column; gap:14px; margin-bottom:4px; }
-  .mood-item label { display:flex; justify-content:space-between; font-size:0.88rem; color:var(--ink); margin-bottom:6px; }
-  .mood-item label span { font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--ink-light); }
-  input[type=range] { -webkit-appearance:none; width:100%; height:4px; background:var(--border); border-radius:2px; outline:none; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 1px 4px rgba(184,92,56,0.3); transition:transform 0.15s; }
-  input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.2); }
+/* ── TEXTAREA ── */
+textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:12px 14px;font-family:'Lora',serif;font-size:0.88rem;color:var(--ink);resize:vertical;min-height:88px;outline:none;transition:border-color 0.2s,background 0.3s;line-height:1.7}
+textarea:focus{border-color:var(--accent-cool)}
+textarea::placeholder{color:var(--ink-faint);font-style:italic}
 
-  /* ── HABITS ── */
-  .habit-list { display:flex; flex-direction:column; gap:10px; }
-  .habit-item { display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:var(--bg); border:1px solid var(--border); border-radius:9px; cursor:pointer; transition:all 0.2s; user-select:none; }
-  .habit-item:hover { border-color:var(--accent-warm); }
-  .habit-item.checked { background:var(--checked-bg); border-color:var(--green); }
-  .habit-check { width:20px; height:20px; border:2px solid var(--ink-faint); border-radius:5px; flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; font-size:12px; color:transparent; }
-  .habit-item.checked .habit-check { background:var(--green); border-color:var(--green); color:white; }
-  .habit-text { flex:1; }
-  .habit-text strong { font-size:0.9rem; font-weight:500; display:block; margin-bottom:2px; color:var(--ink); }
-  .habit-text small { font-size:0.78rem; color:var(--ink-light); font-style:italic; }
+/* ── PROMPTS ── */
+.prompts{display:flex;flex-direction:column;gap:14px}
+.prompt-q{font-size:0.9rem;color:var(--ink);font-style:italic;margin-bottom:7px;padding-left:11px;border-left:3px solid var(--accent-cool)}
 
-  /* ── TEXTAREA ── */
-  textarea { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:9px; padding:14px 16px; font-family:'Lora',serif; font-size:0.9rem; color:var(--ink); resize:vertical; min-height:90px; outline:none; transition:border-color 0.2s,background 0.3s; line-height:1.7; }
-  textarea:focus { border-color:var(--accent-cool); }
-  textarea::placeholder { color:var(--ink-faint); font-style:italic; }
+/* ── BUTTONS ── */
+.btn{background:var(--accent);color:white;border:none;border-radius:9px;padding:11px 24px;font-family:'DM Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;margin-top:14px}
+.btn:hover{background:var(--accent-warm);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.btn-ghost:hover{background:var(--accent);color:white}
 
-  /* ── PROMPTS ── */
-  .prompts { display:flex; flex-direction:column; gap:16px; }
-  .prompt-q { font-size:0.95rem; color:var(--ink); font-style:italic; margin-bottom:8px; padding-left:12px; border-left:3px solid var(--accent-cool); }
+/* ── SAVE STATUS ── */
+.save-wrap{padding:10px 16px 10px;border-top:1px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;bottom:calc(var(--safe-bottom) + 56px);z-index:50}
+.save-btn{padding:9px 18px;border-radius:9px;border:none;background:var(--accent);color:white;font-size:0.78rem;font-weight:500;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;transition:all 0.15s;flex-shrink:0}
+.save-btn:disabled{opacity:0.5;cursor:not-allowed}
+.save-btn:active{transform:scale(0.97);opacity:0.9}
+.autosave-status{font-size:0.72rem;color:var(--ink-faint);display:flex;align-items:center;gap:6px;flex:1;font-family:'DM Mono',monospace}
+.autosave-dot{width:7px;height:7px;border-radius:50%;background:var(--border-mid);flex-shrink:0;transition:background 0.3s}
+.autosave-dot.saving{background:var(--amber)}
+.autosave-dot.saved{background:var(--green)}
 
-  /* ── BUTTONS ── */
-  .btn { background:var(--accent); color:white; border:none; border-radius:9px; padding:12px 28px; font-family:'DM Mono',monospace; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; cursor:pointer; transition:all 0.2s; margin-top:16px; }
-  .btn:hover { background:var(--accent-warm); transform:translateY(-1px); }
-  .btn:active { transform:translateY(0); }
-  .btn-ghost { background:none; color:var(--accent); border:1px solid var(--accent); }
-  .btn-ghost:hover { background:var(--accent); color:white; }
-  .btn-row { display:flex; gap:10px; flex-wrap:wrap; }
+/* ── WINS ── */
+.win-form{display:flex;gap:8px;margin-bottom:14px}
+.win-form input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:10px 14px;font-family:'Lora',serif;font-size:0.88rem;color:var(--ink);outline:none;transition:border-color 0.2s}
+.win-form input:focus{border-color:var(--green)}
+.win-form input::placeholder{color:var(--ink-faint);font-style:italic}
+.win-form button{background:var(--green);color:white;border:none;border-radius:9px;padding:10px 18px;cursor:pointer;font-size:1rem;transition:all 0.2s}
+.win-form button:hover{background:#4a7a5a}
+.wins-list{display:flex;flex-direction:column;gap:10px}
+.win-item{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;background:var(--checked-bg);border:1px solid var(--green);border-radius:9px;animation:fadeIn 0.3s ease}
+.win-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.win-content{flex:1}
+.win-content p{font-size:0.85rem;color:var(--ink);line-height:1.5}
+.win-content small{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--ink-light)}
+.win-del{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:0.88rem;padding:0;transition:color 0.2s}
+.win-del:hover{color:var(--accent)}
 
-  /* ── WINS ── */
-  .win-form { display:flex; gap:10px; margin-bottom:16px; }
-  .win-form input { flex:1; background:var(--bg); border:1px solid var(--border); border-radius:9px; padding:12px 16px; font-family:'Lora',serif; font-size:0.9rem; color:var(--ink); outline:none; transition:border-color 0.2s; }
-  .win-form input:focus { border-color:var(--green); }
-  .win-form input::placeholder { color:var(--ink-faint); font-style:italic; }
-  .win-form button { background:var(--green); color:white; border:none; border-radius:9px; padding:12px 20px; cursor:pointer; font-size:1.1rem; transition:all 0.2s; }
-  .win-form button:hover { background:#4a7a5a; }
-  .wins-list { display:flex; flex-direction:column; gap:10px; }
-  .win-item { display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:var(--checked-bg); border:1px solid var(--green); border-radius:9px; animation:fadeIn 0.3s ease; }
-  .win-icon { font-size:1.1rem; flex-shrink:0; margin-top:1px; }
-  .win-content { flex:1; }
-  .win-content p { font-size:0.88rem; color:var(--ink); line-height:1.5; }
-  .win-content small { font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--ink-light); }
-  .win-del { background:none; border:none; color:var(--ink-faint); cursor:pointer; font-size:0.9rem; padding:0; transition:color 0.2s; }
-  .win-del:hover { color:var(--accent); }
+/* ── TENSION ── */
+.tension-entry{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:11px;font-size:0.85rem;line-height:1.6;animation:fadeIn 0.3s ease}
+.tension-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.tension-tag{font-family:'DM Mono',monospace;font-size:0.68rem;padding:3px 9px;border-radius:20px;background:var(--border);color:var(--ink-light)}
+.tension-date{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--ink-faint)}
+.tension-form{display:none;margin-top:14px}
+.tension-form.open{display:block}
 
-  /* ── TENSION ── */
-  .tension-entry { background:var(--bg); border:1px solid var(--border); border-radius:9px; padding:16px; margin-bottom:12px; font-size:0.88rem; line-height:1.6; animation:fadeIn 0.3s ease; }
-  .tension-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-  .tension-tag { font-family:'DM Mono',monospace; font-size:0.7rem; padding:3px 10px; border-radius:20px; background:var(--border); color:var(--ink-light); }
-  .tension-date { font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--ink-faint); }
-  .tension-form { display:none; margin-top:16px; }
-  .tension-form.open { display:block; }
+/* ── SELECT ── */
+select{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:9px 13px;font-family:'Lora',serif;font-size:0.85rem;color:var(--ink);width:100%;margin-bottom:9px;outline:none;cursor:pointer}
+select:focus{border-color:var(--accent-cool)}
 
-  /* ── SELECT ── */
-  select { background:var(--bg); border:1px solid var(--border); border-radius:9px; padding:10px 14px; font-family:'Lora',serif; font-size:0.88rem; color:var(--ink); width:100%; margin-bottom:10px; outline:none; cursor:pointer; }
-  select:focus { border-color:var(--accent-cool); }
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.stat-card{background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;text-align:center}
+.stat-num{font-family:'DM Mono',monospace;font-size:1.7rem;color:var(--accent);display:block;line-height:1;margin-bottom:5px}
+.stat-label{font-size:0.73rem;color:var(--ink-light);font-style:italic}
 
-  /* ── STATS ── */
-  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
-  .stat-card { background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); padding:16px 14px; text-align:center; }
-  .stat-num { font-family:'DM Mono',monospace; font-size:1.8rem; color:var(--accent); display:block; line-height:1; margin-bottom:6px; }
-  .stat-label { font-size:0.75rem; color:var(--ink-light); font-style:italic; }
+/* ── CHART ── */
+.mini-chart{display:flex;align-items:flex-end;gap:4px;height:60px;margin-top:14px}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+.bar{width:100%;border-radius:3px 3px 0 0;transition:height 0.4s ease;min-height:2px}
+.bar-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--ink-faint)}
 
-  /* ── CHART ── */
-  .mini-chart { display:flex; align-items:flex-end; gap:4px; height:60px; margin-top:16px; }
-  .bar-wrap { flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; }
-  .bar { width:100%; border-radius:3px 3px 0 0; transition:height 0.4s ease; min-height:2px; }
-  .bar-label { font-family:'DM Mono',monospace; font-size:0.6rem; color:var(--ink-faint); }
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:16px 0}
 
-  /* ── MISC ── */
-  .section-intro { font-size:0.88rem; color:var(--ink-light); font-style:italic; margin-bottom:24px; line-height:1.7; padding:14px 16px; background:var(--paper); border-left:3px solid var(--accent-warm); border-radius:0 9px 9px 0; }
-  .divider { height:1px; background:var(--border); margin:20px 0; }
-  .toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--ink); color:var(--bg); padding:12px 28px; border-radius:30px; font-family:'DM Mono',monospace; font-size:0.8rem; letter-spacing:0.05em; z-index:100; transition:transform 0.3s ease; }
-  .toast.show { transform:translateX(-50%) translateY(0); }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+/* ── BOTTOM NAV ── */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:640px;background:var(--bg);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-bottom);z-index:100}
+.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 0 7px;cursor:pointer;gap:3px;border:none;background:transparent}
+.bn-icon{font-size:22px;opacity:0.35;transition:opacity 0.15s}
+.bn-label{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--ink-faint);letter-spacing:0.04em;transition:color 0.15s;text-transform:uppercase}
+.bn-item.active .bn-icon{opacity:1}
+.bn-item.active .bn-label{color:var(--accent)}
 
-  @media(max-width:480px){
-    h1{font-size:1.7rem} .stats-row{gap:8px} .stat-num{font-size:1.4rem} .tab{font-size:0.65rem;padding:8px 4px} .pin-card{padding:32px 20px}
-  }
+/* ── TOAST ── */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--ink);color:var(--bg);padding:10px 22px;border-radius:24px;font-family:'DM Mono',monospace;font-size:0.76rem;letter-spacing:0.05em;z-index:200;transition:transform 0.3s ease;opacity:0}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:480px){
+  .stats-row{gap:8px}.stat-num{font-size:1.4rem}
+  .tab{font-size:0.62rem;padding:7px 2px}
+  .signin-screen{padding:80px 20px 40px}
+}
 </style>
 </head>
-<!-- ── The Meadow Nav — paste just before </body> in pause ── -->
-<style>
-  #meadow-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 9999;
-    height: 56px;
-    background: rgba(250, 246, 238, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(92, 74, 50, 0.1);
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    gap: 0.25rem;
-    font-family: -apple-system, 'DM Sans', sans-serif;
-  }
-  #meadow-nav a {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    text-decoration: none;
-    padding: 0.35rem 0.75rem;
-    border-radius: 100px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: #8C7B68;
-    transition: background 0.2s, color 0.2s;
-    white-space: nowrap;
-  }
-  #meadow-nav a:hover { background: rgba(92,74,50,0.07); color: #5C4A32; }
-  #meadow-nav a img { width: 22px; height: 22px; border-radius: 6px; object-fit: cover; }
-  #meadow-nav .nav-home {
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 0.9rem;
-    color: #5C4A32;
-    margin-right: 0.25rem;
-  }
-  #meadow-nav .nav-divider {
-    width: 1px; height: 22px;
-    background: rgba(92,74,50,0.15);
-    margin: 0 0.25rem;
-    flex-shrink: 0;
-  }
-  body { padding-top: 56px !important; }
-</style>
+
+<!-- ── Meadow Nav ── -->
 <nav id="meadow-nav">
   <a href="https://bcgordon.github.io" class="nav-home">← the Meadow</a>
-  <div class="nav-divider"></div>
+  <div class="nav-div"></div>
   <a href="https://bcgordon.github.io/the-plan">
-    <img src="https://bcgordon.github.io/the-plan/icon-120.png" alt="The Plan" />
+    <img src="https://bcgordon.github.io/the-plan/icon-192.png" alt="The Plan" />
     The Plan
   </a>
   <a href="https://bcgordon.github.io/find-enough">
@@ -242,520 +247,757 @@
     Find Enough
   </a>
 </nav>
-<!-- ── End Meadow Nav ── -->
-<body>
 
-<!-- PIN SCREEN -->
-<div id="pin-screen">
-  <button class="theme-toggle-pin" onclick="toggleTheme()" title="Toggle dark mode"></button>
-  <div class="pin-card">
-    <div class="pin-logo">
-      <h1><span>Pause.</span></h1>
-      <p>A daily practice in listening &amp; being present.</p>
-    </div>
-    <span class="pin-label" id="pin-label">Enter your PIN</span>
-    <div class="pin-dots" id="pin-dots">
-      <div class="pin-dot" id="d0"></div>
-      <div class="pin-dot" id="d1"></div>
-      <div class="pin-dot" id="d2"></div>
-      <div class="pin-dot" id="d3"></div>
-    </div>
-    <div class="keypad">
-      <div class="key" onclick="pinKey('1')">1</div>
-      <div class="key" onclick="pinKey('2')">2</div>
-      <div class="key" onclick="pinKey('3')">3</div>
-      <div class="key" onclick="pinKey('4')">4</div>
-      <div class="key" onclick="pinKey('5')">5</div>
-      <div class="key" onclick="pinKey('6')">6</div>
-      <div class="key" onclick="pinKey('7')">7</div>
-      <div class="key" onclick="pinKey('8')">8</div>
-      <div class="key" onclick="pinKey('9')">9</div>
-      <div class="key wide" onclick="pinKey('0')">0</div>
-      <div class="key del" onclick="pinDel()">⌫</div>
-    </div>
-    <div class="pin-msg" id="pin-msg"></div>
-    <p class="pin-setup-note" id="pin-setup-note"></p>
-  </div>
-</div>
-
-<!-- MAIN APP -->
-<div id="main-app" style="display:none;">
+<body style="padding-top:48px">
 <div class="app">
 
-  <header>
+<!-- ── SIGN IN ── -->
+<div class="signin-screen" id="signin-screen">
+  <div class="signin-logo">
+    <h1><span>Pause.</span></h1>
+    <p>A daily practice in listening &amp; being present.</p>
+  </div>
+  <p class="signin-sub">Enter your private code to continue, or create a new account.</p>
+  <input class="signin-input" id="code-input" type="text" placeholder="your-private-code" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+  <button class="signin-btn" id="signin-btn" onclick="submitCode()">Enter</button>
+  <div class="signin-error" id="signin-error"></div>
+  <button class="signin-link" onclick="showRegister()">New here? Create an account →</button>
+</div>
+
+<!-- ── REGISTER ── -->
+<div class="register-screen" id="register-screen" style="display:none">
+  <div class="wizard-dots" id="wizard-dots"></div>
+  <div id="wizard-steps" style="width:100%"></div>
+</div>
+
+<!-- ── MAIN APP ── -->
+<div class="main-app" id="main-app">
+
+  <div class="header">
+    <div class="header-appname">pause</div>
     <div class="header-top">
-      <div>
+      <div class="header-left">
         <h1><span>Pause.</span></h1>
-        <p class="tagline">A daily practice in listening &amp; being present.</p>
+        <p>A daily practice in listening &amp; being present.</p>
       </div>
       <div class="header-right">
-        <div class="header-controls">
-          <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"></button>
-          <button class="lock-btn" onclick="lockApp()">🔒 Lock</button>
-        </div>
-        <div class="date-display" id="dateDisplay"></div>
+        <div class="date-badge" id="date-badge"></div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode"></button>
+        <button class="signout-btn" onclick="signOut()">Sign out</button>
       </div>
     </div>
-  </header>
-
-  <nav class="tabs">
-    <button class="tab active" onclick="switchTab('checkin',this)">Check-in</button>
-    <button class="tab" onclick="switchTab('habits',this)">Habits</button>
-    <button class="tab" onclick="switchTab('wins',this)">Wins</button>
-    <button class="tab" onclick="switchTab('log',this)">Tension</button>
-    <button class="tab" onclick="switchTab('history',this)">History</button>
-  </nav>
+    <div class="tabs">
+      <button class="tab active" id="tab-checkin" onclick="showView('checkin',this)">Check-in</button>
+      <button class="tab" id="tab-habits" onclick="showView('habits',this)">Habits</button>
+      <button class="tab" id="tab-wins" onclick="showView('wins',this)">Wins</button>
+      <button class="tab" id="tab-log" onclick="showView('log',this)">Tension</button>
+      <button class="tab" id="tab-history" onclick="showView('history',this)">History</button>
+    </div>
+  </div>
 
   <!-- CHECK-IN -->
-  <div class="section active" id="section-checkin">
-    <p class="section-intro">A few minutes in the morning, a few at night. No pressure — just honest observation.</p>
-    <div class="card">
-      <div class="card-title">Morning — How I'm arriving today</div>
-      <div class="mood-row">
-        <div class="mood-item"><label>Energy <span id="val-energy">5</span></label><input type="range" min="1" max="10" value="5" id="sl-energy" oninput="updateVal('energy',this.value)"></div>
-        <div class="mood-item"><label>Mood / Emotional weight <span id="val-mood">5</span></label><input type="range" min="1" max="10" value="5" id="sl-mood" oninput="updateVal('mood',this.value)"></div>
-        <div class="mood-item"><label>Patience available <span id="val-patience">5</span></label><input type="range" min="1" max="10" value="5" id="sl-patience" oninput="updateVal('patience',this.value)"></div>
+  <div class="view active" id="view-checkin" style="flex-direction:column">
+    <div class="content">
+      <p class="section-intro">A few minutes in the morning, a few at night. No pressure — just honest observation.</p>
+      <div class="card">
+        <div class="card-title">Morning — How I'm arriving today</div>
+        <div class="mood-row">
+          <div class="mood-item"><label>Energy <span id="val-energy">5</span></label><input type="range" min="1" max="10" value="5" id="sl-energy" oninput="updateVal('energy',this.value)"></div>
+          <div class="mood-item"><label>Mood / Emotional weight <span id="val-mood">5</span></label><input type="range" min="1" max="10" value="5" id="sl-mood" oninput="updateVal('mood',this.value)"></div>
+          <div class="mood-item"><label>Patience available <span id="val-patience">5</span></label><input type="range" min="1" max="10" value="5" id="sl-patience" oninput="updateVal('patience',this.value)"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Morning Intention</div>
+        <div class="prompts">
+          <div><p class="prompt-q">One thing I want to practice today…</p><textarea id="intention-1" placeholder="e.g. I'll let my wife finish her thought before I respond."></textarea></div>
+          <div><p class="prompt-q">One thing I want to notice about myself today…</p><textarea id="intention-2" placeholder="e.g. When I feel the urge to jump in and fix things."></textarea></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Evening — How it actually went</div>
+        <div class="mood-row" style="margin-bottom:14px">
+          <div class="mood-item"><label>Listened more than I spoke <span id="val-listen">5</span></label><input type="range" min="1" max="10" value="5" id="sl-listen" oninput="updateVal('listen',this.value)"></div>
+          <div class="mood-item"><label>Followed when I could have led <span id="val-follow">5</span></label><input type="range" min="1" max="10" value="5" id="sl-follow" oninput="updateVal('follow',this.value)"></div>
+          <div class="mood-item"><label>Connection with family today <span id="val-connect">5</span></label><input type="range" min="1" max="10" value="5" id="sl-connect" oninput="updateVal('connect',this.value)"></div>
+        </div>
+        <div class="prompts">
+          <div><p class="prompt-q">A moment I'm proud of…</p><textarea id="reflect-1" placeholder="Small counts. Pausing before responding, asking a question instead of giving advice..."></textarea></div>
+          <div><p class="prompt-q">A moment I want to learn from…</p><textarea id="reflect-2" placeholder="No self-attack. Just curiosity — what was happening in me?"></textarea></div>
+          <div><p class="prompt-q">Tomorrow, I could try…</p><textarea id="reflect-3" placeholder="One small adjustment."></textarea></div>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-title">Morning Intention</div>
-      <div class="prompts">
-        <div><p class="prompt-q">One thing I want to practice today…</p><textarea id="intention-1" placeholder="e.g. I'll let my wife finish her thought before I respond."></textarea></div>
-        <div><p class="prompt-q">One thing I want to notice about myself today…</p><textarea id="intention-2" placeholder="e.g. When I feel the urge to jump in and fix things."></textarea></div>
-      </div>
+    <div class="save-wrap">
+      <div class="autosave-status"><div class="autosave-dot" id="autosave-dot"></div><span id="autosave-label">Auto-saves as you go</span></div>
+      <button class="save-btn" id="save-checkin-btn" onclick="saveCheckin(true)">Save now</button>
     </div>
-    <div class="card">
-      <div class="card-title">Evening — How it actually went</div>
-      <div class="mood-row" style="margin-bottom:16px;">
-        <div class="mood-item"><label>Listened more than I spoke <span id="val-listen">5</span></label><input type="range" min="1" max="10" value="5" id="sl-listen" oninput="updateVal('listen',this.value)"></div>
-        <div class="mood-item"><label>Followed when I could have led <span id="val-follow">5</span></label><input type="range" min="1" max="10" value="5" id="sl-follow" oninput="updateVal('follow',this.value)"></div>
-        <div class="mood-item"><label>Connection with family today <span id="val-connect">5</span></label><input type="range" min="1" max="10" value="5" id="sl-connect" oninput="updateVal('connect',this.value)"></div>
-      </div>
-      <div class="prompts">
-        <div><p class="prompt-q">A moment I'm proud of…</p><textarea id="reflect-1" placeholder="Small counts. Pausing before responding, asking a question instead of giving advice..."></textarea></div>
-        <div><p class="prompt-q">A moment I want to learn from…</p><textarea id="reflect-2" placeholder="No self-attack. Just curiosity — what was happening in me?"></textarea></div>
-        <div><p class="prompt-q">Tomorrow, I could try…</p><textarea id="reflect-3" placeholder="One small adjustment."></textarea></div>
-      </div>
-    </div>
-    <button class="btn" onclick="saveCheckin()">Save Today's Check-in</button>
   </div>
 
   <!-- HABITS -->
-  <div class="section" id="section-habits">
-    <p class="section-intro">These are behaviors to practice, not rules to be perfect at. Each check is a small act of intention.</p>
-    <div class="stats-row">
-      <div class="stat-card"><span class="stat-num" id="streak-count">0</span><span class="stat-label">day streak</span></div>
-      <div class="stat-card"><span class="stat-num" id="today-checked">0</span><span class="stat-label">today</span></div>
-      <div class="stat-card"><span class="stat-num" id="week-pct">0%</span><span class="stat-label">this week</span></div>
+  <div class="view" id="view-habits" style="flex-direction:column">
+    <div class="content">
+      <p class="section-intro">These are behaviors to practice, not rules to be perfect at. Each check is a small act of intention.</p>
+      <div class="stats-row">
+        <div class="stat-card"><span class="stat-num" id="streak-count">0</span><span class="stat-label">day streak</span></div>
+        <div class="stat-card"><span class="stat-num" id="today-checked">0</span><span class="stat-label">today</span></div>
+        <div class="stat-card"><span class="stat-num" id="week-pct">0%</span><span class="stat-label">this week</span></div>
+      </div>
+      <div class="card"><div class="card-title">Listening &amp; Presence</div><div class="habit-list" id="habits-listen"></div></div>
+      <div class="card"><div class="card-title">Leading vs. Following</div><div class="habit-list" id="habits-lead"></div></div>
+      <div class="card"><div class="card-title">Mood &amp; Self-Care</div><div class="habit-list" id="habits-mood"></div></div>
     </div>
-    <div class="card"><div class="card-title">Listening &amp; Presence</div><div class="habit-list" id="habits-listen"></div></div>
-    <div class="card"><div class="card-title">Leading vs. Following</div><div class="habit-list" id="habits-lead"></div></div>
-    <div class="card"><div class="card-title">Mood &amp; Self-Care</div><div class="habit-list" id="habits-mood"></div></div>
   </div>
 
   <!-- WINS -->
-  <div class="section" id="section-wins">
-    <p class="section-intro">Evidence that you're changing. Log every moment you caught yourself and chose differently — even the tiny ones.</p>
-    <div class="card">
-      <div class="card-title">Add a Win</div>
-      <div class="win-form">
-        <input type="text" id="win-input" placeholder="e.g. Asked my daughter about her day instead of telling her about mine…" onkeydown="if(event.key==='Enter') addWin()">
-        <button onclick="addWin()">+</button>
+  <div class="view" id="view-wins" style="flex-direction:column">
+    <div class="content">
+      <p class="section-intro">Evidence that you're changing. Log every moment you caught yourself and chose differently — even the tiny ones.</p>
+      <div class="card">
+        <div class="card-title">Add a Win</div>
+        <div class="win-form">
+          <input type="text" id="win-input" placeholder="e.g. Asked my daughter about her day instead of telling her about mine…" onkeydown="if(event.key==='Enter') addWin()">
+          <button onclick="addWin()">+</button>
+        </div>
       </div>
+      <div class="wins-list" id="wins-list"></div>
+      <p id="wins-empty" style="text-align:center;color:var(--ink-faint);font-style:italic;font-size:0.85rem;margin-top:18px">Your wins will appear here. Start small.</p>
     </div>
-    <div class="wins-list" id="wins-list"></div>
-    <p id="wins-empty" style="text-align:center;color:var(--ink-faint);font-style:italic;font-size:0.88rem;margin-top:20px;">Your wins will appear here. Start small.</p>
   </div>
 
   <!-- TENSION LOG -->
-  <div class="section" id="section-log">
-    <p class="section-intro">Not a blame log — a pattern finder. Note what happened without judgment. Look for your triggers over time.</p>
-    <div class="card">
-      <div class="card-title">Log a moment</div>
-      <button class="btn btn-ghost" onclick="toggleTensionForm()">+ New Entry</button>
-      <div class="tension-form" id="tension-form">
-        <div class="divider"></div>
-        <select id="t-person"><option value="">Who was involved?</option><option value="wife">Wife</option><option value="daughter">Daughter</option><option value="both">Both</option><option value="self">Just me</option></select>
-        <select id="t-type"><option value="">What pattern showed up?</option><option value="spoke-first">I spoke before listening</option><option value="led-when-should-follow">I led when I should have followed</option><option value="reactive">I reacted instead of responded</option><option value="shutdown">I went quiet / shut down</option><option value="mood">My mood affected them</option><option value="other">Something else</option></select>
-        <textarea id="t-note" placeholder="What was happening? What did I notice before it happened?" style="min-height:80px;margin-bottom:10px;"></textarea>
-        <textarea id="t-next" placeholder="If it happens again, I could try…" style="min-height:60px;margin-bottom:10px;"></textarea>
-        <div class="btn-row">
-          <button class="btn" onclick="saveTensionEntry()">Save Entry</button>
-          <button class="btn btn-ghost" onclick="toggleTensionForm()">Cancel</button>
+  <div class="view" id="view-log" style="flex-direction:column">
+    <div class="content">
+      <p class="section-intro">Not a blame log — a pattern finder. Note what happened without judgment. Look for your triggers over time.</p>
+      <div class="card">
+        <div class="card-title">Log a moment</div>
+        <button class="btn btn-ghost" onclick="toggleTensionForm()">+ New Entry</button>
+        <div class="tension-form" id="tension-form">
+          <div class="divider"></div>
+          <select id="t-person"><option value="">Who was involved?</option><option value="wife">Wife</option><option value="daughter">Daughter</option><option value="both">Both</option><option value="self">Just me</option></select>
+          <select id="t-type"><option value="">What pattern showed up?</option><option value="spoke-first">I spoke before listening</option><option value="led-when-should-follow">I led when I should have followed</option><option value="reactive">I reacted instead of responded</option><option value="shutdown">I went quiet / shut down</option><option value="mood">My mood affected them</option><option value="other">Something else</option></select>
+          <textarea id="t-note" placeholder="What was happening? What did I notice before it happened?" style="min-height:76px;margin-bottom:9px"></textarea>
+          <textarea id="t-next" placeholder="If it happens again, I could try…" style="min-height:60px;margin-bottom:9px"></textarea>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" onclick="saveTensionEntry()">Save Entry</button>
+            <button class="btn btn-ghost" onclick="toggleTensionForm()" style="margin-top:14px">Cancel</button>
+          </div>
         </div>
       </div>
+      <div id="tension-list"></div>
+      <p id="tension-empty" style="text-align:center;color:var(--ink-faint);font-style:italic;font-size:0.85rem;margin-top:18px">Entries appear here. Patterns become visible over time.</p>
     </div>
-    <div id="tension-list"></div>
-    <p id="tension-empty" style="text-align:center;color:var(--ink-faint);font-style:italic;font-size:0.88rem;margin-top:20px;">Entries appear here. Patterns become visible over time.</p>
   </div>
 
   <!-- HISTORY -->
-  <div class="section" id="section-history">
-    <p class="section-intro">Zoom out. Real change happens slowly. Trust the trend.</p>
-    <div class="stats-row">
-      <div class="stat-card"><span class="stat-num" id="hist-checkins">0</span><span class="stat-label">check-ins</span></div>
-      <div class="stat-card"><span class="stat-num" id="hist-wins">0</span><span class="stat-label">wins logged</span></div>
-      <div class="stat-card"><span class="stat-num" id="hist-entries">0</span><span class="stat-label">log entries</span></div>
+  <div class="view" id="view-history" style="flex-direction:column">
+    <div class="content">
+      <p class="section-intro">Zoom out. Real change happens slowly. Trust the trend.</p>
+      <div class="stats-row">
+        <div class="stat-card"><span class="stat-num" id="hist-checkins">0</span><span class="stat-label">check-ins</span></div>
+        <div class="stat-card"><span class="stat-num" id="hist-wins">0</span><span class="stat-label">wins logged</span></div>
+        <div class="stat-card"><span class="stat-num" id="hist-entries">0</span><span class="stat-label">log entries</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Mood trend — last 14 days</div>
+        <div class="mini-chart" id="mood-chart"></div>
+        <p style="font-size:0.72rem;color:var(--ink-faint);font-style:italic;margin-top:9px;text-align:center">Mood (blue) · Connection (green) · Patience (amber)</p>
+      </div>
+      <div class="card"><div class="card-title">Seasonal note</div><p id="season-note" style="font-size:0.85rem;line-height:1.7;color:var(--ink-light)"></p></div>
+      <div class="card"><div class="card-title">Tension patterns</div><div id="pattern-summary" style="font-size:0.85rem;color:var(--ink-light);line-height:1.9"></div></div>
     </div>
-    <div class="card">
-      <div class="card-title">Mood trend — last 14 days</div>
-      <div class="mini-chart" id="mood-chart"></div>
-      <p style="font-size:0.75rem;color:var(--ink-faint);font-style:italic;margin-top:10px;text-align:center;">Mood (blue) · Connection (green) · Patience (amber)</p>
-    </div>
-    <div class="card"><div class="card-title">Seasonal note</div><p id="season-note" style="font-size:0.88rem;line-height:1.7;color:var(--ink-light);"></p></div>
-    <div class="card"><div class="card-title">Tension patterns</div><div id="pattern-summary" style="font-size:0.88rem;color:var(--ink-light);line-height:1.9;"></div></div>
   </div>
 
-</div>
-</div>
+  <nav class="bottom-nav">
+    <button class="bn-item active" id="bn-checkin" onclick="showView('checkin',this)"><span class="bn-icon">🌅</span><span class="bn-label">Check-in</span></button>
+    <button class="bn-item" id="bn-habits" onclick="showView('habits',this)"><span class="bn-icon">✅</span><span class="bn-label">Habits</span></button>
+    <button class="bn-item" id="bn-wins" onclick="showView('wins',this)"><span class="bn-icon">✨</span><span class="bn-label">Wins</span></button>
+    <button class="bn-item" id="bn-log" onclick="showView('log',this)"><span class="bn-icon">📝</span><span class="bn-label">Tension</span></button>
+    <button class="bn-item" id="bn-history" onclick="showView('history',this)"><span class="bn-icon">📈</span><span class="bn-label">History</span></button>
+  </nav>
 
+</div><!-- /.main-app -->
+</div><!-- /.app -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ── THEME ─────────────────────────────────────────────────────
-function applyTheme(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('theme')||'light'); }
-function toggleTheme(){ const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',n); localStorage.setItem('theme',n); }
+// ── SUPABASE (same project as The Plan & Find Enough) ───────────────────────
+const SUPABASE_URL = 'https://wxsefbilwilpzpjoynds.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4c2VmYmlsd2lscHpwam95bmRzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NTY1NzUsImV4cCI6MjA5MTIzMjU3NX0.X6wYcI6IjlJNCJUEMGpOoxy1UX796PBro7_Kj7DtDVA';
+
+async function sbFetch(path, opts = {}) {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': opts.prefer || 'return=representation'
+    },
+    method: opts.method || 'GET',
+    body: opts.body || undefined
+  });
+  if (!res.ok) throw new Error(await res.text());
+  const t = await res.text();
+  return t ? JSON.parse(t) : null;
+}
+
+// ── HELPERS ──────────────────────────────────────────────────────────────────
+function gl(k) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : null; } catch(e) { return null; } }
+function sl(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e) {} }
+
+function today() { return new Date().toISOString().slice(0, 10); }
+
+function formatDate(s) {
+  if (!s) return '';
+  return new Date(s + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── DATE DISPLAY ─────────────────────────────────────────────────────────────
+const _now = new Date();
+document.getElementById('date-badge').innerHTML =
+  _now.toLocaleDateString('en-US', { weekday: 'long' }) + '<br>' +
+  _now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// ── THEME ─────────────────────────────────────────────────────────────────────
+function applyTheme() {
+  const saved = gl('pause-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+}
+function toggleTheme() {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  sl('pause-theme', next);
+}
 applyTheme();
 
-// ── PIN SYSTEM ────────────────────────────────────────────────
-// PIN is stored as a simple hash (not cryptographic, but obscured)
-function hashPin(pin){ let h=0; for(let i=0;i<pin.length;i++){h=((h<<5)-h)+pin.charCodeAt(i);h|=0;} return h.toString(36); }
+// ── CODE WORDS FOR GENERATION ─────────────────────────────────────────────────
+const ADJS = ['amber','birch','calm','cedar','dusk','ember','fern','gentle','haven','indigo','jade','keen','linden','mellow','noble','opal','pine','quiet','river','sage','tidal','umber','velvet','willow','zephyr'];
+const NOUNS = ['anchor','bay','bloom','brook','cask','cliff','cove','creek','dale','drift','dune','fjord','grove','gale','harbor','heath','isle','knoll','lark','mead','mist','moss','peak','raft','reef','ridge','shore','spring','stone','surf','tide','vale','vine','wake','wave','wren'];
 
-let pinBuffer = '';
-let pinMode = ''; // 'enter' | 'setup' | 'confirm'
-let pendingPin = '';
-
-function initPin(){
-  const stored = localStorage.getItem('pause_pin');
-  if(!stored){
-    pinMode = 'setup';
-    document.getElementById('pin-label').textContent = 'Choose a 4-digit PIN';
-    document.getElementById('pin-setup-note').textContent = 'You\'ll use this every time you open the app. Don\'t forget it — there\'s no reset, just clear your browser data to start over.';
-  } else {
-    pinMode = 'enter';
-    document.getElementById('pin-label').textContent = 'Enter your PIN';
-    document.getElementById('pin-setup-note').textContent = '';
-  }
-  pinBuffer = '';
-  updateDots();
+function genCode() {
+  const a = ADJS[Math.floor(Math.random() * ADJS.length)];
+  const n = NOUNS[Math.floor(Math.random() * NOUNS.length)];
+  const num = Math.floor(Math.random() * 9000) + 1000;
+  return a + '-' + n + '-' + num;
 }
 
-function pinKey(digit){
-  if(pinBuffer.length >= 4) return;
-  pinBuffer += digit;
-  updateDots();
-  if(pinBuffer.length === 4) setTimeout(processPin, 120);
-}
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+let userCode = null;
 
-function pinDel(){
-  pinBuffer = pinBuffer.slice(0,-1);
-  updateDots();
-  setMsg('','');
-}
-
-function updateDots(){
-  for(let i=0;i<4;i++){
-    const d = document.getElementById('d'+i);
-    d.classList.toggle('filled', i < pinBuffer.length);
-    d.classList.remove('error');
-  }
-}
-
-function processPin(){
-  if(pinMode === 'enter'){
-    const stored = localStorage.getItem('pause_pin');
-    if(hashPin(pinBuffer) === stored){
-      showApp();
+async function submitCode() {
+  const input = document.getElementById('code-input');
+  const code = input.value.trim().toLowerCase();
+  if (!code) return;
+  const btn = document.getElementById('signin-btn');
+  btn.disabled = true; btn.textContent = 'Checking…';
+  document.getElementById('signin-error').textContent = '';
+  try {
+    const rows = await sbFetch('journal_codes?code=eq.' + encodeURIComponent(code) + '&select=code');
+    if (rows && rows.length > 0) {
+      sl('pause-code', code);
+      initApp(code);
     } else {
-      setMsg('Incorrect PIN. Try again.','error');
-      shakeError();
-      pinBuffer = '';
-      updateDots();
+      document.getElementById('signin-error').textContent = 'Code not recognised. Please try again.';
+      btn.disabled = false; btn.textContent = 'Enter';
     }
-  } else if(pinMode === 'setup'){
-    pendingPin = pinBuffer;
-    pinMode = 'confirm';
-    pinBuffer = '';
-    updateDots();
-    document.getElementById('pin-label').textContent = 'Confirm your PIN';
-    setMsg('','');
-  } else if(pinMode === 'confirm'){
-    if(pinBuffer === pendingPin){
-      localStorage.setItem('pause_pin', hashPin(pinBuffer));
-      setMsg('PIN set!','success');
-      setTimeout(showApp, 400);
+  } catch(e) {
+    document.getElementById('signin-error').textContent = 'Connection error. Please try again.';
+    btn.disabled = false; btn.textContent = 'Enter';
+  }
+}
+document.getElementById('code-input').addEventListener('keydown', e => { if (e.key === 'Enter') submitCode(); });
+
+function signOut() {
+  if (!confirm('Sign out of this device?')) return;
+  localStorage.removeItem('pause-code');
+  location.reload();
+}
+
+// ── WIZARD ────────────────────────────────────────────────────────────────────
+let wiz = { step: 0, name: '', code: null };
+const WIZ_STEPS = 3;
+
+function showRegister() {
+  document.getElementById('signin-screen').style.display = 'none';
+  document.getElementById('register-screen').style.display = 'flex';
+  wiz = { step: 0, name: '', code: null };
+  renderWizard();
+}
+
+function showSignin() {
+  document.getElementById('register-screen').style.display = 'none';
+  document.getElementById('signin-screen').style.display = 'flex';
+}
+
+function renderWizDots() {
+  const wrap = document.getElementById('wizard-dots');
+  wrap.innerHTML = '';
+  for (let i = 0; i < WIZ_STEPS; i++) {
+    const d = document.createElement('div');
+    d.className = 'wizard-dot' + (i === wiz.step ? ' active' : i < wiz.step ? ' done' : '');
+    wrap.appendChild(d);
+  }
+}
+
+function renderWizard() {
+  renderWizDots();
+  const wrap = document.getElementById('wizard-steps');
+  wrap.innerHTML = '';
+  const step = document.createElement('div');
+  step.className = 'wizard-step';
+
+  if (wiz.step === 0) {
+    step.innerHTML = `
+      <div class="wizard-title">Welcome 👋</div>
+      <div class="wizard-sub">Pause is your daily practice in listening, following others' leads, and building stronger connections. Let's get you set up.</div>
+      <div>
+        <p style="font-size:0.78rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:8px">What should we call you?</p>
+        <input id="wiz-name" class="signin-input" type="text" placeholder="Your first name" autocomplete="given-name" style="text-align:left" value="${wiz.name}" />
+      </div>
+      <button class="wizard-btn" onclick="wizNext()">Continue</button>
+      <button class="wizard-back" onclick="showSignin()">← Back to sign in</button>`;
+    setTimeout(() => {
+      const n = document.getElementById('wiz-name');
+      if (n) { n.focus(); n.addEventListener('keydown', e => { if (e.key === 'Enter') wizNext(); }); }
+    }, 50);
+
+  } else if (wiz.step === 1) {
+    step.innerHTML = `
+      <div class="wizard-title">Hi ${wiz.name}! 🌱</div>
+      <div class="wizard-sub">Pause will give you a private code — like a password, but easier to remember. Write it down somewhere safe.</div>
+      <div style="background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center">
+        <p style="font-size:0.78rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:10px">How it works</p>
+        <p style="font-size:0.85rem;color:var(--ink);line-height:1.7">Your code is unique to you. Use it to sign in on any device — phone, tablet, or browser — and your data will be there. Anyone with your code can see your journal, so keep it private.</p>
+      </div>
+      <button class="wizard-btn" onclick="wizNext()">Generate my code →</button>
+      <button class="wizard-back" onclick="wizBack()">← Back</button>`;
+
+  } else if (wiz.step === 2) {
+    if (!wiz.code) wiz.code = genCode();
+    step.innerHTML = `
+      <div style="text-align:center;font-size:2.5rem;margin-bottom:4px">🎉</div>
+      <div class="wizard-title">Your code</div>
+      <div class="wizard-sub">This is your private access code. Write it down — you'll need it to sign in on any device.</div>
+      <div class="code-display" onclick="copyWizCode()" id="code-box">
+        <div class="code-value" id="gen-code">${wiz.code}</div>
+        <div class="code-hint" id="copy-hint">Tap to copy</div>
+      </div>
+      <div style="font-size:0.8rem;color:var(--ink-faint);text-align:center;line-height:1.5">This is the only time it's shown in full — save it now.</div>
+      <button class="wizard-btn" id="wiz-create-btn" onclick="createAccount()">Start with Pause →</button>
+      <div id="wiz-error" style="font-size:0.8rem;color:#c0392b;text-align:center"></div>`;
+  }
+
+  wrap.appendChild(step);
+}
+
+function copyWizCode() {
+  navigator.clipboard.writeText(wiz.code).then(() => {
+    const h = document.getElementById('copy-hint');
+    if (h) { h.textContent = 'Copied!'; setTimeout(() => { if (h) h.textContent = 'Tap to copy'; }, 2000); }
+  }).catch(() => {});
+}
+
+function wizNext() {
+  if (wiz.step === 0) {
+    const n = document.getElementById('wiz-name');
+    const v = (n ? n.value.trim() : '');
+    if (!v) { if (n) n.style.borderColor = '#c0392b'; return; }
+    wiz.name = v;
+  }
+  wiz.step = Math.min(wiz.step + 1, WIZ_STEPS - 1);
+  renderWizard();
+}
+
+function wizBack() {
+  wiz.step = Math.max(wiz.step - 1, 0);
+  renderWizard();
+}
+
+async function createAccount() {
+  const btn = document.getElementById('wiz-create-btn');
+  const err = document.getElementById('wiz-error');
+  btn.disabled = true; btn.textContent = 'Creating…';
+  const code = wiz.code;
+  try {
+    try {
+      await sbFetch('journal_codes', { method: 'POST', prefer: 'return=minimal', body: JSON.stringify({ code, name: wiz.name }) });
+    } catch(e2) {
+      await sbFetch('journal_codes', { method: 'POST', prefer: 'return=minimal', body: JSON.stringify({ code }) });
+    }
+    sl('pause-code', code);
+    document.getElementById('register-screen').style.display = 'none';
+    initApp(code);
+  } catch(e) {
+    if (e.message && e.message.includes('duplicate')) {
+      wiz.code = genCode();
+      renderWizard();
+      btn.disabled = false; btn.textContent = 'Start with Pause →';
     } else {
-      setMsg('PINs didn\'t match. Start over.','error');
-      shakeError();
-      pinMode = 'setup';
-      pendingPin = '';
-      pinBuffer = '';
-      updateDots();
-      document.getElementById('pin-label').textContent = 'Choose a 4-digit PIN';
+      err.textContent = 'Something went wrong. Please try again.';
+      btn.disabled = false; btn.textContent = 'Start with Pause →';
     }
   }
 }
 
-function shakeError(){
-  const dots = document.querySelectorAll('.pin-dot');
-  dots.forEach(d=>{ d.classList.add('error'); setTimeout(()=>d.classList.remove('error'),500); });
-}
-
-function setMsg(text, type){
-  const el = document.getElementById('pin-msg');
-  el.textContent = text;
-  el.className = 'pin-msg' + (type?' '+type:'');
-}
-
-function lockApp(){
-  document.getElementById('main-app').style.display = 'none';
-  document.getElementById('pin-screen').style.display = 'flex';
-  pinMode = 'enter';
-  pinBuffer = '';
-  updateDots();
-  setMsg('','');
-  document.getElementById('pin-label').textContent = 'Enter your PIN';
-}
-
-function showApp(){
-  document.getElementById('pin-screen').style.display = 'none';
-  document.getElementById('main-app').style.display = 'block';
-  const d = new Date();
-  document.getElementById('dateDisplay').innerHTML =
-    d.toLocaleDateString('en-US',{weekday:'long'})+'<br>'+
-    d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+// ── INIT APP ──────────────────────────────────────────────────────────────────
+async function initApp(code) {
+  userCode = code;
+  document.getElementById('signin-screen').style.display = 'none';
+  document.getElementById('register-screen').style.display = 'none';
+  const ma = document.getElementById('main-app');
+  ma.style.display = 'flex';
+  ma.style.flexDirection = 'column';
+  ma.style.flex = '1';
+  await loadAllData();
   renderHabits();
   renderWins();
   renderTension();
   loadCheckinForToday();
+  showView('checkin', document.getElementById('tab-checkin'));
 }
 
-// Allow keyboard input on PIN screen
-document.addEventListener('keydown', e => {
-  if(document.getElementById('pin-screen').style.display === 'none') return;
-  if(e.key >= '0' && e.key <= '9') pinKey(e.key);
-  if(e.key === 'Backspace') pinDel();
+// ── CLOUD DATA ────────────────────────────────────────────────────────────────
+// Table: pause_data — columns: user_code (text), key (text), value (jsonb)
+// Composite primary key: (user_code, key)
+let cloudCache = {};
+
+async function loadAllData() {
+  if (!userCode) return;
+  try {
+    const rows = await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&select=key,value');
+    if (rows) rows.forEach(r => { cloudCache[r.key] = r.value; });
+  } catch(e) { console.warn('loadAllData:', e); }
+}
+
+async function cloudGet(key) {
+  if (cloudCache[key] !== undefined) return cloudCache[key];
+  try {
+    const rows = await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&key=eq.' + encodeURIComponent(key) + '&select=value');
+    const val = (rows && rows.length > 0) ? rows[0].value : null;
+    cloudCache[key] = val;
+    return val;
+  } catch(e) { return null; }
+}
+
+async function cloudSet(key, value) {
+  cloudCache[key] = value;
+  if (!userCode) return;
+  try {
+    const rows = await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&key=eq.' + encodeURIComponent(key) + '&select=key');
+    if (rows && rows.length > 0) {
+      await sbFetch('pause_data?user_code=eq.' + encodeURIComponent(userCode) + '&key=eq.' + encodeURIComponent(key), { method: 'PATCH', prefer: 'return=minimal', body: JSON.stringify({ value }) });
+    } else {
+      await sbFetch('pause_data', { method: 'POST', prefer: 'return=minimal', body: JSON.stringify({ user_code: userCode, key, value }) });
+    }
+  } catch(e) { console.warn('cloudSet:', e); }
+}
+
+// ── SLIDER LABELS ─────────────────────────────────────────────────────────────
+function updateVal(k, v) { document.getElementById('val-' + k).textContent = v; }
+
+// ── CHECK-IN ──────────────────────────────────────────────────────────────────
+function loadCheckinForToday() {
+  const all = cloudCache['checkins'] || {};
+  const c = all[today()]; if (!c) return;
+  ['energy','mood','patience','listen','follow','connect'].forEach(f => {
+    if (c[f]) { const sl = document.getElementById('sl-' + f); if (sl) { sl.value = c[f]; updateVal(f, c[f]); } }
+  });
+  ['intention-1','intention-2','reflect-1','reflect-2','reflect-3'].forEach(id => {
+    const el = document.getElementById(id);
+    const key = id.replace(/-/g, '_');
+    if (el && c[key]) el.value = c[key];
+  });
+}
+
+let autoSaveTimer = null;
+
+function scheduleAutoSave() {
+  clearTimeout(autoSaveTimer);
+  setSyncStatus('pending');
+  autoSaveTimer = setTimeout(() => saveCheckin(false), 3000);
+}
+
+function setSyncStatus(state) {
+  const dot = document.getElementById('autosave-dot');
+  const label = document.getElementById('autosave-label');
+  if (!dot || !label) return;
+  dot.className = 'autosave-dot' + (state === 'saving' ? ' saving' : state === 'saved' ? ' saved' : '');
+  if (state === 'pending') label.textContent = 'Unsaved changes…';
+  else if (state === 'saving') label.textContent = 'Saving…';
+  else if (state === 'saved') label.textContent = 'Saved to cloud';
+  else label.textContent = 'Auto-saves as you go';
+}
+
+// Wire up auto-save on all check-in inputs
+['sl-energy','sl-mood','sl-patience','sl-listen','sl-follow','sl-connect'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', scheduleAutoSave);
+});
+['intention-1','intention-2','reflect-1','reflect-2','reflect-3'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', scheduleAutoSave);
 });
 
-// ── STORAGE ───────────────────────────────────────────────────
-const store = {
-  get: k => { try{ return JSON.parse(localStorage.getItem('pause_'+k)); }catch{ return null; } },
-  set: (k,v) => localStorage.setItem('pause_'+k, JSON.stringify(v)),
-};
-
-// ── TABS ──────────────────────────────────────────────────────
-function switchTab(tab,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('section-'+tab).classList.add('active');
-  if(tab==='history') renderHistory();
-  if(tab==='habits') renderHabits();
-  if(tab==='wins') renderWins();
-  if(tab==='log') renderTension();
-  if(tab==='checkin') loadCheckinForToday();
-}
-
-// ── UTILS ─────────────────────────────────────────────────────
-function updateVal(k,v){ document.getElementById('val-'+k).textContent=v; }
-function today(){ return new Date().toISOString().slice(0,10); }
-function formatDate(s){ if(!s)return''; return new Date(s+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
-function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
-
-// ── CHECK-IN ──────────────────────────────────────────────────
-function loadCheckinForToday(){
-  const all = store.get('checkins')||{};
-  const c = all[today()]; if(!c) return;
-  ['energy','mood','patience','listen','follow','connect'].forEach(f=>{
-    if(c[f]){ const sl=document.getElementById('sl-'+f); if(sl){sl.value=c[f];updateVal(f,c[f]);} }
-  });
-  ['intention-1','intention-2','reflect-1','reflect-2','reflect-3'].forEach(id=>{
-    const el=document.getElementById(id);
-    const key=id.replace(/-/g,'_');
-    if(el&&c[key]) el.value=c[key];
-  });
-}
-
-function saveCheckin(){
+async function saveCheckin(manual = false) {
+  clearTimeout(autoSaveTimer);
+  const btn = document.getElementById('save-checkin-btn');
+  if (manual) { btn.disabled = true; btn.textContent = 'Saving…'; }
+  setSyncStatus('saving');
   const data = {
-    date:today(),
-    energy:document.getElementById('sl-energy').value,
-    mood:document.getElementById('sl-mood').value,
-    patience:document.getElementById('sl-patience').value,
-    listen:document.getElementById('sl-listen').value,
-    follow:document.getElementById('sl-follow').value,
-    connect:document.getElementById('sl-connect').value,
-    intention_1:document.getElementById('intention-1').value,
-    intention_2:document.getElementById('intention-2').value,
-    reflect_1:document.getElementById('reflect-1').value,
-    reflect_2:document.getElementById('reflect-2').value,
-    reflect_3:document.getElementById('reflect-3').value,
+    date: today(),
+    energy: document.getElementById('sl-energy').value,
+    mood: document.getElementById('sl-mood').value,
+    patience: document.getElementById('sl-patience').value,
+    listen: document.getElementById('sl-listen').value,
+    follow: document.getElementById('sl-follow').value,
+    connect: document.getElementById('sl-connect').value,
+    intention_1: document.getElementById('intention-1').value,
+    intention_2: document.getElementById('intention-2').value,
+    reflect_1: document.getElementById('reflect-1').value,
+    reflect_2: document.getElementById('reflect-2').value,
+    reflect_3: document.getElementById('reflect-3').value,
   };
-  const all = store.get('checkins')||{};
-  all[today()] = data;
-  store.set('checkins',all);
-  showToast('Check-in saved ✓');
+  try {
+    const all = cloudCache['checkins'] || {};
+    all[today()] = data;
+    await cloudSet('checkins', all);
+    setSyncStatus('saved');
+    if (manual) { btn.textContent = 'Saved ✓'; setTimeout(() => { btn.textContent = 'Save now'; btn.disabled = false; setSyncStatus('idle'); }, 2000); }
+    else { setTimeout(() => setSyncStatus('idle'), 3000); }
+  } catch(e) {
+    setSyncStatus('idle');
+    if (manual) { btn.textContent = 'Save now'; btn.disabled = false; }
+  }
 }
 
-// ── HABITS ────────────────────────────────────────────────────
+// ── HABITS ────────────────────────────────────────────────────────────────────
 const HABITS = {
-  listen:[
-    {id:'h1',text:'Let them finish before I responded',note:'Counted to 3 after they stopped speaking'},
-    {id:'h2',text:'Asked a question instead of giving advice',note:'"What do you think?" instead of "Here\'s what I\'d do"'},
-    {id:'h3',text:'Made eye contact and put my phone down',note:'Full presence, even for 5 minutes'},
-    {id:'h4',text:'Noticed the urge to interrupt and paused',note:'Felt the impulse — didn\'t act on it'},
+  listen: [
+    { id:'h1', text:'Let them finish before I responded', note:'Counted to 3 after they stopped speaking' },
+    { id:'h2', text:'Asked a question instead of giving advice', note:'"What do you think?" instead of "Here\'s what I\'d do"' },
+    { id:'h3', text:'Made eye contact and put my phone down', note:'Full presence, even for 5 minutes' },
+    { id:'h4', text:'Noticed the urge to interrupt and paused', note:'Felt the impulse — didn\'t act on it' },
   ],
-  lead:[
-    {id:'h5',text:'Followed my wife\'s lead on a decision',note:'Let her steer without redirecting'},
-    {id:'h6',text:'Asked "what do you need?" instead of fixing',note:'Support, not solutions'},
-    {id:'h7',text:'Let a moment of tension pass without escalating',note:'Silence can be a good choice'},
-    {id:'h8',text:'Caught myself leading and stepped back',note:'Noticed it in the moment'},
+  lead: [
+    { id:'h5', text:'Followed my wife\'s lead on a decision', note:'Let her steer without redirecting' },
+    { id:'h6', text:'Asked "what do you need?" instead of fixing', note:'Support, not solutions' },
+    { id:'h7', text:'Let a moment of tension pass without escalating', note:'Silence can be a good choice' },
+    { id:'h8', text:'Caught myself leading and stepped back', note:'Noticed it in the moment' },
   ],
-  mood:[
-    {id:'h9',text:'Got outside or exercised',note:'Movement is medicine, especially in winter'},
-    {id:'h10',text:'Got enough sleep (7+ hours)',note:'Sleep debt amplifies reactivity'},
-    {id:'h11',text:'Named my mood to myself before acting',note:'"I\'m frustrated" before speaking'},
-    {id:'h12',text:'Used light therapy / got sunlight',note:'Especially important Oct–Mar'},
+  mood: [
+    { id:'h9', text:'Got outside or exercised', note:'Movement is medicine, especially in winter' },
+    { id:'h10', text:'Got enough sleep (7+ hours)', note:'Sleep debt amplifies reactivity' },
+    { id:'h11', text:'Named my mood to myself before acting', note:'"I\'m frustrated" before speaking' },
+    { id:'h12', text:'Used light therapy / got sunlight', note:'Especially important Oct–Mar' },
   ],
 };
 
-function renderHabits(){
-  const checks = store.get('habit-checks')||{};
-  const td = today();
-  ['listen','lead','mood'].forEach(group=>{
-    const el=document.getElementById('habits-'+group); el.innerHTML='';
-    HABITS[group].forEach(h=>{
-      const isChecked=!!(checks[td]&&checks[td][h.id]);
-      const div=document.createElement('div');
-      div.className='habit-item'+(isChecked?' checked':'');
-      div.onclick=()=>toggleHabit(h.id);
-      div.innerHTML=`<div class="habit-check">${isChecked?'✓':''}</div><div class="habit-text"><strong>${h.text}</strong><small>${h.note}</small></div>`;
+function renderHabits() {
+  const checks = (cloudCache['habit-checks'] || {})[today()] || {};
+  ['listen','lead','mood'].forEach(group => {
+    const el = document.getElementById('habits-' + group);
+    el.innerHTML = '';
+    HABITS[group].forEach(h => {
+      const isChecked = !!checks[h.id];
+      const div = document.createElement('div');
+      div.className = 'habit-item' + (isChecked ? ' checked' : '');
+      div.onclick = () => toggleHabit(h.id);
+      div.innerHTML = `<div class="habit-check">${isChecked ? '✓' : ''}</div><div class="habit-text"><strong>${h.text}</strong><small>${h.note}</small></div>`;
       el.appendChild(div);
     });
   });
-  updateHabitStats(checks);
+  updateHabitStats();
 }
 
-function toggleHabit(id){
-  const checks=store.get('habit-checks')||{};
-  const td=today();
-  if(!checks[td]) checks[td]={};
-  checks[td][id]=!checks[td][id];
-  store.set('habit-checks',checks);
+async function toggleHabit(id) {
+  const all = cloudCache['habit-checks'] || {};
+  const td = today();
+  if (!all[td]) all[td] = {};
+  all[td][id] = !all[td][id];
+  cloudCache['habit-checks'] = all;
   renderHabits();
+  try { await cloudSet('habit-checks', all); } catch(e) {}
 }
 
-function updateHabitStats(checks){
-  const td=today();
-  const todayChecks=checks[td]||{};
-  document.getElementById('today-checked').textContent=Object.values(todayChecks).filter(Boolean).length;
-  const total=Object.values(HABITS).flat().length;
-  let weekChecked=0,weekDays=0;
-  for(let i=0;i<7;i++){const d2=new Date();d2.setDate(d2.getDate()-i);const k=d2.toISOString().slice(0,10);if(checks[k]){weekDays++;weekChecked+=Object.values(checks[k]).filter(Boolean).length;}}
-  document.getElementById('week-pct').textContent=weekDays?Math.round(weekChecked/(weekDays*total)*100)+'%':'0%';
-  let streak=0;
-  for(let i=0;i<90;i++){const d2=new Date();d2.setDate(d2.getDate()-i);const k=d2.toISOString().slice(0,10);if(checks[k]&&Object.values(checks[k]).some(Boolean))streak++;else if(i>0)break;}
-  document.getElementById('streak-count').textContent=streak;
+function updateHabitStats() {
+  const all = cloudCache['habit-checks'] || {};
+  const td = today();
+  const todayChecks = all[td] || {};
+  document.getElementById('today-checked').textContent = Object.values(todayChecks).filter(Boolean).length;
+  const total = Object.values(HABITS).flat().length;
+  let weekChecked = 0, weekDays = 0;
+  for (let i = 0; i < 7; i++) {
+    const d2 = new Date(); d2.setDate(d2.getDate() - i);
+    const k = d2.toISOString().slice(0, 10);
+    if (all[k]) { weekDays++; weekChecked += Object.values(all[k]).filter(Boolean).length; }
+  }
+  document.getElementById('week-pct').textContent = weekDays ? Math.round(weekChecked / (weekDays * total) * 100) + '%' : '0%';
+  let streak = 0;
+  for (let i = 0; i < 90; i++) {
+    const d2 = new Date(); d2.setDate(d2.getDate() - i);
+    const k = d2.toISOString().slice(0, 10);
+    if (all[k] && Object.values(all[k]).some(Boolean)) streak++;
+    else if (i > 0) break;
+  }
+  document.getElementById('streak-count').textContent = streak;
 }
 
-// ── WINS ──────────────────────────────────────────────────────
-function addWin(){
-  const inp=document.getElementById('win-input');
-  const text=inp.value.trim(); if(!text) return;
-  const wins=store.get('wins')||[];
-  wins.unshift({id:Date.now(),text,date:today()});
-  store.set('wins',wins); inp.value='';
-  renderWins(); showToast('Win logged ✓');
-}
-
-function deleteWin(id){
-  store.set('wins',(store.get('wins')||[]).filter(w=>w.id!==id));
+// ── WINS ──────────────────────────────────────────────────────────────────────
+async function addWin() {
+  const inp = document.getElementById('win-input');
+  const text = inp.value.trim(); if (!text) return;
+  const wins = cloudCache['wins'] || [];
+  wins.unshift({ id: Date.now(), text, date: today() });
+  cloudCache['wins'] = wins;
+  inp.value = '';
   renderWins();
+  showToast('Win logged ✓');
+  try { await cloudSet('wins', wins); } catch(e) {}
 }
 
-function renderWins(){
-  const wins=store.get('wins')||[];
-  const list=document.getElementById('wins-list');
-  const empty=document.getElementById('wins-empty');
-  list.innerHTML=''; empty.style.display=wins.length?'none':'block';
-  const icons=['✨','🌱','💙','🎯','🌟','💚','🔑','🌿'];
-  wins.forEach(w=>{
-    const d2=document.createElement('div'); d2.className='win-item';
-    d2.innerHTML=`<div class="win-icon">${icons[w.id%icons.length]}</div><div class="win-content"><p>${w.text}</p><small>${formatDate(w.date)}</small></div><button class="win-del" onclick="deleteWin(${w.id})">✕</button>`;
-    list.appendChild(d2);
+async function deleteWin(id) {
+  const wins = (cloudCache['wins'] || []).filter(w => w.id !== id);
+  cloudCache['wins'] = wins;
+  renderWins();
+  try { await cloudSet('wins', wins); } catch(e) {}
+}
+
+function renderWins() {
+  const wins = cloudCache['wins'] || [];
+  const list = document.getElementById('wins-list');
+  const empty = document.getElementById('wins-empty');
+  list.innerHTML = '';
+  empty.style.display = wins.length ? 'none' : 'block';
+  const icons = ['✨','🌱','💙','🎯','🌟','💚','🔑','🌿'];
+  wins.forEach(w => {
+    const d = document.createElement('div');
+    d.className = 'win-item';
+    d.innerHTML = `<div class="win-icon">${icons[w.id % icons.length]}</div><div class="win-content"><p>${w.text}</p><small>${formatDate(w.date)}</small></div><button class="win-del" onclick="deleteWin(${w.id})">✕</button>`;
+    list.appendChild(d);
   });
 }
 
-// ── TENSION ───────────────────────────────────────────────────
-const personLabels={wife:'Wife',daughter:'Daughter',both:'Both',self:'Just me'};
-const typeLabels={'spoke-first':'Spoke before listening','led-when-should-follow':'Led when should follow','reactive':'Reacted vs. responded','shutdown':'Went quiet/shut down','mood':'Mood affected them','other':'Other'};
+// ── TENSION ───────────────────────────────────────────────────────────────────
+const personLabels = { wife:'Wife', daughter:'Daughter', both:'Both', self:'Just me' };
+const typeLabels = {
+  'spoke-first':'Spoke before listening',
+  'led-when-should-follow':'Led when should follow',
+  'reactive':'Reacted vs. responded',
+  'shutdown':'Went quiet/shut down',
+  'mood':'Mood affected them',
+  'other':'Other',
+};
 
-function toggleTensionForm(){ document.getElementById('tension-form').classList.toggle('open'); }
+function toggleTensionForm() { document.getElementById('tension-form').classList.toggle('open'); }
 
-function saveTensionEntry(){
-  const note=document.getElementById('t-note').value.trim();
-  if(!note){showToast('Add a note first');return;}
-  const entry={id:Date.now(),date:today(),person:document.getElementById('t-person').value,type:document.getElementById('t-type').value,note,next:document.getElementById('t-next').value.trim()};
-  const all=store.get('tension')||[];
-  all.unshift(entry); store.set('tension',all);
-  ['t-note','t-next'].forEach(id=>document.getElementById(id).value='');
-  ['t-person','t-type'].forEach(id=>document.getElementById(id).value='');
-  toggleTensionForm(); renderTension(); showToast('Entry saved ✓');
+async function saveTensionEntry() {
+  const note = document.getElementById('t-note').value.trim();
+  if (!note) { showToast('Add a note first'); return; }
+  const entry = {
+    id: Date.now(), date: today(),
+    person: document.getElementById('t-person').value,
+    type: document.getElementById('t-type').value,
+    note, next: document.getElementById('t-next').value.trim()
+  };
+  const all = cloudCache['tension'] || [];
+  all.unshift(entry);
+  cloudCache['tension'] = all;
+  ['t-note','t-next'].forEach(id => document.getElementById(id).value = '');
+  ['t-person','t-type'].forEach(id => document.getElementById(id).value = '');
+  toggleTensionForm();
+  renderTension();
+  showToast('Entry saved ✓');
+  try { await cloudSet('tension', all); } catch(e) {}
 }
 
-function renderTension(){
-  const entries=store.get('tension')||[];
-  const list=document.getElementById('tension-list');
-  const empty=document.getElementById('tension-empty');
-  list.innerHTML=''; empty.style.display=entries.length?'none':'block';
-  entries.forEach(e=>{
-    const div=document.createElement('div'); div.className='tension-entry';
-    div.innerHTML=`<div class="tension-meta"><span class="tension-tag">${personLabels[e.person]||'Unspecified'} · ${typeLabels[e.type]||'Other'}</span><span class="tension-date">${formatDate(e.date)}</span></div><p style="margin-bottom:${e.next?'10px':'0'};color:var(--ink);">${e.note}</p>${e.next?`<p style="color:var(--accent-cool);font-style:italic;font-size:0.83rem;">Next time: ${e.next}</p>`:''}`;
+function renderTension() {
+  const entries = cloudCache['tension'] || [];
+  const list = document.getElementById('tension-list');
+  const empty = document.getElementById('tension-empty');
+  list.innerHTML = '';
+  empty.style.display = entries.length ? 'none' : 'block';
+  entries.forEach(e => {
+    const div = document.createElement('div');
+    div.className = 'tension-entry';
+    div.innerHTML = `<div class="tension-meta"><span class="tension-tag">${personLabels[e.person] || 'Unspecified'} · ${typeLabels[e.type] || 'Other'}</span><span class="tension-date">${formatDate(e.date)}</span></div><p style="margin-bottom:${e.next ? '8px':'0'};color:var(--ink)">${e.note}</p>${e.next ? `<p style="color:var(--accent-cool);font-style:italic;font-size:0.8rem">Next time: ${e.next}</p>` : ''}`;
     list.appendChild(div);
   });
 }
 
-// ── HISTORY ───────────────────────────────────────────────────
-function renderHistory(){
-  const checkins=store.get('checkins')||{};
-  const wins=store.get('wins')||[];
-  const tension=store.get('tension')||[];
-  document.getElementById('hist-checkins').textContent=Object.keys(checkins).length;
-  document.getElementById('hist-wins').textContent=wins.length;
-  document.getElementById('hist-entries').textContent=tension.length;
+// ── HISTORY ───────────────────────────────────────────────────────────────────
+function renderHistory() {
+  const checkins = cloudCache['checkins'] || {};
+  const wins = cloudCache['wins'] || [];
+  const tension = cloudCache['tension'] || [];
+  document.getElementById('hist-checkins').textContent = Object.keys(checkins).length;
+  document.getElementById('hist-wins').textContent = wins.length;
+  document.getElementById('hist-entries').textContent = tension.length;
 
-  const chart=document.getElementById('mood-chart'); chart.innerHTML='';
-  for(let i=13;i>=0;i--){
-    const d2=new Date(); d2.setDate(d2.getDate()-i);
-    const key=d2.toISOString().slice(0,10); const c=checkins[key];
-    const wrap=document.createElement('div'); wrap.className='bar-wrap';
-    if(c){
-      [{val:c.mood,color:'var(--accent-cool)'},{val:c.connect,color:'var(--green)'},{val:c.patience,color:'var(--amber)'}].forEach(b=>{
-        const bar=document.createElement('div'); bar.className='bar';
-        bar.style.cssText=`height:${(b.val||5)*5}px;background:${b.color};opacity:0.75;width:32%;display:inline-block;`;
+  const chart = document.getElementById('mood-chart');
+  chart.innerHTML = '';
+  for (let i = 13; i >= 0; i--) {
+    const d2 = new Date(); d2.setDate(d2.getDate() - i);
+    const key = d2.toISOString().slice(0, 10);
+    const c = checkins[key];
+    const wrap = document.createElement('div'); wrap.className = 'bar-wrap';
+    if (c) {
+      [{ val: c.mood, color: 'var(--accent-cool)' }, { val: c.connect, color: 'var(--green)' }, { val: c.patience, color: 'var(--amber)' }].forEach(b => {
+        const bar = document.createElement('div'); bar.className = 'bar';
+        bar.style.cssText = `height:${(b.val || 5) * 5}px;background:${b.color};opacity:0.75;width:32%;display:inline-block;`;
         wrap.appendChild(bar);
       });
-    } else { const bar=document.createElement('div'); bar.className='bar'; bar.style.cssText='height:4px;background:var(--border);'; wrap.appendChild(bar); }
-    const label=document.createElement('div'); label.className='bar-label';
-    label.textContent=d2.toLocaleDateString('en-US',{weekday:'narrow'});
+    } else { const bar = document.createElement('div'); bar.className = 'bar'; bar.style.cssText = 'height:4px;background:var(--border);'; wrap.appendChild(bar); }
+    const label = document.createElement('div'); label.className = 'bar-label';
+    label.textContent = d2.toLocaleDateString('en-US', { weekday: 'narrow' });
     wrap.appendChild(label); chart.appendChild(wrap);
   }
 
-  const month=new Date().getMonth()+1;
-  document.getElementById('season-note').textContent=(month>=10||month<=2)
-    ?'You\'re in your harder months (Oct–Feb). Depression tends to be more active now. This isn\'t weakness — it\'s seasonal. Prioritize light, sleep, and movement. Give yourself more buffer.'
-    :month<=5?'Spring is arriving. Energy often lifts. Use this window to build habits that carry you through next winter.'
-    :'Summer and early fall are typically your easier months. A good time to work on listening and following habits while your mood is steadier.';
+  const month = new Date().getMonth() + 1;
+  document.getElementById('season-note').textContent = (month >= 10 || month <= 2)
+    ? 'You\'re in your harder months (Oct–Feb). Depression tends to be more active now. This isn\'t weakness — it\'s seasonal. Prioritize light, sleep, and movement. Give yourself more buffer.'
+    : month <= 5 ? 'Spring is arriving. Energy often lifts. Use this window to build habits that carry you through next winter.'
+    : 'Summer and early fall are typically your easier months. A good time to work on listening and following habits while your mood is steadier.';
 
-  const patterns={};
-  tension.forEach(e=>{if(e.type)patterns[e.type]=(patterns[e.type]||0)+1;});
-  const pDiv=document.getElementById('pattern-summary');
-  if(!Object.keys(patterns).length){pDiv.textContent='No entries yet. Patterns will show here once you start logging tension moments.';}
-  else pDiv.innerHTML=Object.entries(patterns).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:6px 0;"><span>${typeLabels[k]||k}</span><span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);">${v}×</span></div>`).join('');
+  const patterns = {};
+  tension.forEach(e => { if (e.type) patterns[e.type] = (patterns[e.type] || 0) + 1; });
+  const pDiv = document.getElementById('pattern-summary');
+  if (!Object.keys(patterns).length) { pDiv.textContent = 'No entries yet. Patterns will show here once you start logging tension moments.'; }
+  else pDiv.innerHTML = Object.entries(patterns).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:5px 0"><span>${typeLabels[k]||k}</span><span style="font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--accent)">${v}×</span></div>`).join('');
 }
 
-// ── START ─────────────────────────────────────────────────────
-initPin();
+// ── TABS / VIEWS ──────────────────────────────────────────────────────────────
+function showView(name, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+  // Sync bottom nav
+  const bn = document.getElementById('bn-' + name);
+  if (bn) bn.classList.add('active');
+  // Sync top tab
+  const tb = document.getElementById('tab-' + name);
+  if (tb) tb.classList.add('active');
+  // On switch to history, render it
+  if (name === 'history') renderHistory();
+  if (name === 'habits') { updateHabitStats(); }
+  if (name === 'wins') renderWins();
+  if (name === 'log') renderTension();
+}
+
+// ── BOOT ──────────────────────────────────────────────────────────────────────
+const savedCode = gl('pause-code');
+if (savedCode) {
+  initApp(savedCode);
+}
 </script>
 </body>
 </html>
