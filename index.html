@@ -837,7 +837,11 @@ const HABITS = {
 };
 
 function renderHabits() {
-  const checks = (cloudCache['habit-checks'] || {})[today()] || {};
+  const allChecks = cloudCache['habit-checks'] || {};
+  console.log('today() =', today());
+  console.log('habit-checks keys =', Object.keys(allChecks));
+  console.log('checks for today =', allChecks[today()]);
+  const checks = allChecks[today()] || {};
   ['listen','lead','mood'].forEach(group => {
     const el = document.getElementById('habits-' + group);
     el.innerHTML = '';
