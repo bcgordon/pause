@@ -718,16 +718,39 @@ function updateVal(k, v) { document.getElementById('val-' + k).textContent = v; 
 
 // ── CHECK-IN ──────────────────────────────────────────────────────────────────
 function loadCheckinForToday() {
-  const all = cloudCache['checkins'] || {};
-  const c = all[today()]; if (!c) return;
+  // Pause auto-save during load to prevent programmatic value changes from triggering a save
+  const _saving = autoSaveTimer;
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = null;
+
+  // Reset fields to defaults first
   ['energy','mood','patience','listen','follow','connect'].forEach(f => {
-    if (c[f]) { const sl = document.getElementById('sl-' + f); if (sl) { sl.value = c[f]; updateVal(f, c[f]); } }
+    const sl = document.getElementById('sl-' + f);
+    if (sl) { sl.value = 5; updateVal(f, 5); }
   });
   ['intention-1','intention-2','reflect-1','reflect-2','reflect-3'].forEach(id => {
     const el = document.getElementById(id);
-    const key = id.replace(/-/g, '_');
-    if (el && c[key]) el.value = c[key];
+    if (el) el.value = '';
   });
+
+  // Load today's saved data if it exists
+  const all = cloudCache['checkins'] || {};
+  const c = all[today()];
+  if (c) {
+    ['energy','mood','patience','listen','follow','connect'].forEach(f => {
+      if (c[f] !== undefined) { const sl = document.getElementById('sl-' + f); if (sl) { sl.value = c[f]; updateVal(f, c[f]); } }
+    });
+    ['intention-1','intention-2','reflect-1','reflect-2','reflect-3'].forEach(id => {
+      const el = document.getElementById(id);
+      const key = id.replace(/-/g, '_');
+      if (el && c[key]) el.value = c[key];
+    });
+  }
+
+  // Clear any auto-save that was queued during the load
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = null;
+  setSyncStatus('idle');
 }
 
 let autoSaveTimer = null;
